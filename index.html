@@ -6,13 +6,13 @@
 <title>Social Sphere</title>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTVPXWKNZG"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-  gtag('config', 'G-ZTVPXWKNZG');
+gtag('config', 'G-H2DNL0SX0P');
 </script>
 
 <style>
@@ -146,7 +146,26 @@ Continue
 <script>
 const offerLink = "https://t.datsk11.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
 
-document.getElementById("ctaButton").href = offerLink;
+const btn = document.getElementById("ctaButton");
+
+btn.href = offerLink;
+
+btn.addEventListener("click", function (e) {
+
+    e.preventDefault();
+
+    if (typeof gtag === "function") {
+        gtag("event", "continue_click", {
+            event_category: "CTA",
+            event_label: "Continue Button"
+        });
+    }
+
+    setTimeout(function () {
+        window.location.href = offerLink;
+    }, 250);
+
+});
 </script>
 
 </body>
