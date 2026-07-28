@@ -3,16 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Social Sphere</title>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
 gtag('js', new Date());
+
 gtag('config', 'G-H2DNL0SX0P');
 </script>
+
 
 <style>
 
@@ -22,73 +30,76 @@ gtag('config', 'G-H2DNL0SX0P');
     box-sizing:border-box;
 }
 
+
 html,
 body{
+
     width:100%;
     height:100%;
+
     overflow:hidden;
+
     font-family:Arial,sans-serif;
+
     background:#000;
+
 }
 
-/* ===========================
-   VIDEO BACKGROUND
-=========================== */
 
-.video-wrapper{
+/* VIDEO */
+
+.video-bg{
+
     position:fixed;
-    inset:0;
-    overflow:hidden;
-    background:#000;
-    z-index:-3;
-}
 
-/* Размытая копия */
-.video-blur{
-    position:absolute;
-    inset:0;
+    top:0;
+    left:0;
 
     width:100%;
     height:100%;
+
 
     object-fit:cover;
-    object-position:center center;
 
-    transform:scale(1.25);
 
-    filter:blur(30px);
+    /*
+    Главная настройка кадра.
+    50% = центр.
+    35% = чуть выше,
+    чтобы человек был виден.
+    */
 
-    opacity:.75;
+    object-position:center 35%;
 
-    z-index:0;
+
+    z-index:-2;
+
+
 }
 
-/* Основное видео */
-.video-main{
-    position:absolute;
-    inset:0;
 
-    width:100%;
-    height:100%;
-
-    object-fit:contain;
-    object-position:center center;
-
-    z-index:1;
-}
 
 /* Затемнение */
 
 .overlay{
+
     position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.35);
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.25);
+
     z-index:-1;
+
 }
 
-/* ===========================
-   CONTENT
-=========================== */
+
+
+/* CONTENT */
 
 .content{
 
@@ -107,41 +118,41 @@ body{
 
     text-align:center;
 
-    color:#fff;
+    color:white;
 
     padding:20px;
 
 }
 
+
+
 h1{
 
     font-size:2.6rem;
 
-    margin-bottom:.4em;
+    margin-bottom:15px;
 
     font-weight:700;
 
 }
 
+
+
 p{
 
     font-size:1.2rem;
 
-    margin-bottom:1.6em;
-
-    max-width:500px;
+    margin-bottom:30px;
 
 }
 
-.cta-btn{
 
-    display:inline-block;
+
+.cta-btn{
 
     background:#ff5a5f;
 
-    color:#fff;
-
-    font-size:1.3rem;
+    color:white;
 
     padding:16px 34px;
 
@@ -149,115 +160,175 @@ p{
 
     text-decoration:none;
 
+    font-size:1.3rem;
+
     font-weight:bold;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.45);
-
-    transition:.25s;
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
 
 }
+
+
 
 .cta-btn:hover{
 
     background:#e14c50;
 
-    transform:scale(1.05);
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+
+.video-bg{
+
+    object-position:center 30%;
 
 }
 
-/* ===========================
-   MOBILE
-=========================== */
 
-@media (max-width:768px){
+h1{
 
-    h1{
-        font-size:2rem;
-    }
-
-    p{
-        font-size:1rem;
-    }
-
-    .cta-btn{
-
-        font-size:1.1rem;
-
-        padding:15px 30px;
-
-    }
+    font-size:2rem;
 
 }
+
+
+p{
+
+    font-size:1rem;
+
+}
+
+
+.cta-btn{
+
+    font-size:1.1rem;
+
+    padding:15px 30px;
+
+}
+
+
+}
+
 
 </style>
 
 </head>
 
+
 <body>
 
-<div class="video-wrapper">
 
-    <!-- Размытый фон -->
+<video 
+class="video-bg"
 
-    <video class="video-blur" autoplay muted loop playsinline preload="auto">
-        <source src="video.mp4" type="video/mp4">
-    </video>
+autoplay
 
-    <!-- Основное видео -->
+muted
 
-    <video class="video-main" autoplay muted loop playsinline preload="auto">
-        <source src="video.mp4" type="video/mp4">
-    </video>
+loop
 
-</div>
+playsinline
+
+webkit-playsinline
+
+preload="auto">
+
+<source src="video.mp4" type="video/mp4">
+
+</video>
+
+
 
 <div class="overlay"></div>
 
+
+
 <div class="content">
 
-    <h1>Meet Someone Tonight</h1>
 
-    <p>Unlock your story</p>
+<h1>
+Meet Someone Tonight
+</h1>
 
-    <a id="ctaButton" href="#" class="cta-btn">
-        Continue
-    </a>
+
+<p>
+Unlock your story
+</p>
+
+
+<a id="ctaButton" href="#" class="cta-btn">
+Continue
+</a>
+
 
 </div>
 
+
+
 <script>
 
-const offerLink = "https://t.datsk11.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
 
-const btn = document.getElementById("ctaButton");
+const offerLink =
+"https://t.datsk11.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
+
+
+const btn =
+document.getElementById("ctaButton");
+
+
 
 btn.href = offerLink;
 
-btn.addEventListener("click", function(e){
 
-    e.preventDefault();
 
-    if(typeof gtag === "function"){
+btn.addEventListener("click",function(e){
 
-        gtag("event","continue_click",{
 
-            event_category:"CTA",
+e.preventDefault();
 
-            event_label:"Continue Button"
 
-        });
 
-    }
+if(typeof gtag==="function"){
 
-    setTimeout(function(){
 
-        window.location.href = offerLink;
+gtag("event","continue_click",{
 
-    },250);
+
+event_category:"CTA",
+
+event_label:"Continue Button"
+
 
 });
 
+
+}
+
+
+
+setTimeout(function(){
+
+
+window.location.href = offerLink;
+
+
+},250);
+
+
+
+});
+
+
+
 </script>
+
+
 
 </body>
 </html>
