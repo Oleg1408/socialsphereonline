@@ -6,7 +6,7 @@
 
 <title>Social Sphere</title>
 
-<!-- Google tag -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
 
 <script>
@@ -24,29 +24,21 @@ gtag('config', 'G-H2DNL0SX0P');
 
 <style>
 
-*{
+body, html{
+
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
 
-
-html,
-body{
-
-    width:100%;
     height:100%;
-
-    overflow:hidden;
 
     font-family:Arial,sans-serif;
 
-    background:#000;
+    overflow:hidden;
 
 }
 
 
-/* VIDEO */
+/* Фоновое видео */
 
 .video-bg{
 
@@ -62,18 +54,18 @@ body{
     object-fit:cover;
 
 
-    /*
-    Главная настройка кадра.
-    50% = центр.
-    35% = чуть выше,
-    чтобы человек был виден.
-    */
-
-    object-position:center 35%;
+    /* немного больше показывает кадр */
+    object-position:center 40%;
 
 
-    z-index:-2;
+    z-index:-1;
 
+
+    filter:blur(3px);
+
+
+    /* меньше приближение */
+    transform:scale(1);
 
 }
 
@@ -91,36 +83,46 @@ body{
     width:100%;
     height:100%;
 
-    background:rgba(0,0,0,0.25);
 
-    z-index:-1;
+    background:rgba(0,0,0,0.30);
+
+
+    z-index:0;
 
 }
 
 
 
-/* CONTENT */
+/* Контент */
 
 .content{
 
     position:relative;
 
-    width:100%;
+    z-index:1;
+
+
     height:100%;
+
 
     display:flex;
 
     flex-direction:column;
 
+
     justify-content:center;
+
 
     align-items:center;
 
+
+    color:#fff;
+
+
     text-align:center;
 
-    color:white;
 
-    padding:20px;
+    padding:0 20px;
 
 }
 
@@ -128,9 +130,9 @@ body{
 
 h1{
 
-    font-size:2.6rem;
+    font-size:2.6em;
 
-    margin-bottom:15px;
+    margin-bottom:0.4em;
 
     font-weight:700;
 
@@ -140,9 +142,11 @@ h1{
 
 p{
 
-    font-size:1.2rem;
+    font-size:1.2em;
 
-    margin-bottom:30px;
+    margin-bottom:1.6em;
+
+    max-width:500px;
 
 }
 
@@ -152,19 +156,31 @@ p{
 
     background:#ff5a5f;
 
-    color:white;
+    color:#fff;
+
+
+    font-size:1.3em;
+
 
     padding:16px 34px;
 
+
+    border:none;
+
+
     border-radius:10px;
+
+
+    cursor:pointer;
+
 
     text-decoration:none;
 
-    font-size:1.3rem;
 
     font-weight:bold;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.4);
 
 }
 
@@ -178,35 +194,50 @@ p{
 
 
 
-/* MOBILE */
+/* Мобильные устройства */
 
 @media(max-width:768px){
 
 
 .video-bg{
 
-    object-position:center 30%;
+
+    /*
+    Чуть больше пространства кадра
+    без сильного обрезания
+    */
+
+    object-position:center 35%;
+
+
+    transform:scale(0.96);
+
 
 }
+
 
 
 h1{
 
-    font-size:2rem;
+    font-size:2.2em;
 
 }
+
 
 
 p{
 
-    font-size:1rem;
+    font-size:1.05em;
+
+    padding:0 10px;
 
 }
 
 
+
 .cta-btn{
 
-    font-size:1.1rem;
+    font-size:1.15em;
 
     padding:15px 30px;
 
@@ -216,7 +247,9 @@ p{
 }
 
 
+
 </style>
+
 
 </head>
 
@@ -224,20 +257,14 @@ p{
 <body>
 
 
+
 <video 
-class="video-bg"
-
-autoplay
-
-muted
-
-loop
-
+class="video-bg" 
+autoplay 
+muted 
+loop 
 playsinline
-
-webkit-playsinline
-
-preload="auto">
+webkit-playsinline>
 
 <source src="video.mp4" type="video/mp4">
 
@@ -263,7 +290,9 @@ Unlock your story
 
 
 <a id="ctaButton" href="#" class="cta-btn">
+
 Continue
+
 </a>
 
 
@@ -274,56 +303,51 @@ Continue
 <script>
 
 
-const offerLink =
-"https://t.datsk11.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
+const offerLink = "https://t.datsk11.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
 
 
-const btn =
-document.getElementById("ctaButton");
-
+const btn = document.getElementById("ctaButton");
 
 
 btn.href = offerLink;
 
 
 
-btn.addEventListener("click",function(e){
+btn.addEventListener("click", function(e){
 
 
-e.preventDefault();
+    e.preventDefault();
+
+
+    if(typeof gtag === "function"){
+
+
+        gtag("event","continue_click",{
+
+
+            event_category:"CTA",
+
+            event_label:"Continue Button"
+
+
+        });
+
+
+    }
 
 
 
-if(typeof gtag==="function"){
+    setTimeout(function(){
 
 
-gtag("event","continue_click",{
+        window.location.href = offerLink;
 
 
-event_category:"CTA",
+    },250);
 
-event_label:"Continue Button"
 
 
 });
-
-
-}
-
-
-
-setTimeout(function(){
-
-
-window.location.href = offerLink;
-
-
-},250);
-
-
-
-});
-
 
 
 </script>
@@ -331,4 +355,5 @@ window.location.href = offerLink;
 
 
 </body>
+
 </html>
