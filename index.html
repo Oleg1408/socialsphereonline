@@ -27,6 +27,7 @@ gtag('config', 'G-H2DNL0SX0P');
 body, html{
 
     margin:0;
+
     padding:0;
 
     height:100%;
@@ -145,6 +146,69 @@ p{
     margin-bottom:1.6em;
 
     max-width:500px;
+
+}
+
+
+/* Online indicator */
+
+.online-status{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    font-size:1.05em;
+
+    margin-top:-0.7em;
+
+    margin-bottom:1.6em;
+
+}
+
+
+
+.online-dot{
+
+    width:9px;
+
+    height:9px;
+
+    background:#35d05f;
+
+    border-radius:50%;
+
+    display:inline-block;
+
+    box-shadow:0 0 8px rgba(53,208,95,0.8);
+
+    animation:pulse 1.8s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+    0%,100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:0.65;
+
+        transform:scale(0.88);
+
+    }
 
 }
 
@@ -283,13 +347,22 @@ Meet Someone Tonight
 
 
 <p>
-Unlock your story
+Singles looking for something more
 </p>
+
+
+<div class="online-status">
+
+<span class="online-dot"></span>
+
+<span id="onlineCount">37 women online now</span>
+
+</div>
 
 
 <a id="ctaButton" href="#" class="cta-btn">
 
-Continue
+See Who's Online
 
 </a>
 
@@ -325,7 +398,7 @@ btn.addEventListener("click", function(e){
 
             event_category:"CTA",
 
-            event_label:"Continue Button"
+            event_label:"See Who's Online Button"
 
 
         });
@@ -346,6 +419,43 @@ btn.addEventListener("click", function(e){
 
 
 });
+
+
+
+/* Динамический online-счётчик */
+
+const onlineCount = document.getElementById("onlineCount");
+
+let currentCount = 37;
+
+
+function updateOnlineCount(){
+
+    const change = Math.random() > 0.5 ? 1 : -1;
+
+    currentCount += change;
+
+
+    if(currentCount < 35){
+
+        currentCount = 35;
+
+    }
+
+
+    if(currentCount > 40){
+
+        currentCount = 40;
+
+    }
+
+
+    onlineCount.textContent = currentCount + " women online now";
+
+}
+
+
+setInterval(updateOnlineCount, 12000);
 
 
 </script>
