@@ -426,26 +426,48 @@ btn.addEventListener("click", function(e){
 
 const onlineCount = document.getElementById("onlineCount");
 
-let currentCount = 37;
+/*
+   При каждом новом открытии страницы
+   стартовое значение случайное: 10–115
+*/
+
+let currentCount = Math.floor(Math.random() * 106) + 10;
+
+
+/*
+   Сразу показываем новое значение,
+   чтобы 37 не появлялось даже на мгновение
+*/
+
+onlineCount.textContent = currentCount + " women online now";
 
 
 function updateOnlineCount(){
 
-    const change = Math.random() > 0.5 ? 1 : -1;
+    /*
+       Случайное изменение от -5 до +5
+    */
+
+    const change = Math.floor(Math.random() * 11) - 5;
 
     currentCount += change;
 
 
-    if(currentCount < 35){
+    /*
+       Минимум — 10
+       Максимум — 115
+    */
 
-        currentCount = 35;
+    if(currentCount < 10){
+
+        currentCount = 10;
 
     }
 
 
-    if(currentCount > 40){
+    if(currentCount > 115){
 
-        currentCount = 40;
+        currentCount = 115;
 
     }
 
@@ -455,7 +477,7 @@ function updateOnlineCount(){
 }
 
 
-setInterval(updateOnlineCount, 12000);
+setInterval(updateOnlineCount, 10000);
 
 
 </script>
