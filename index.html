@@ -6,15 +6,10 @@
 
 <title>Acceso Oficial Perú 🇵🇪</title>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
+function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-H2DNL0SX0P');
 </script>
@@ -28,12 +23,11 @@ gtag('config', 'G-H2DNL0SX0P');
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html,body{
     width:100%;
     min-height:100%;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#07090d;
+    background:#080a0f;
     color:#fff;
 }
 
@@ -48,24 +42,23 @@ body{
 
 .video-bg{
     position:fixed;
-    top:0;
-    left:0;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
     object-position:center center;
     z-index:-3;
-    filter:blur(2px);
-    transform:scale(1.04);
+    filter:blur(3px);
+    transform:scale(1.05);
 }
 
-.background-image{
+.background-fallback{
     position:fixed;
     inset:0;
     z-index:-4;
     background:
-        radial-gradient(circle at 50% 20%, rgba(255,190,0,.13), transparent 35%),
-        linear-gradient(180deg,rgba(4,6,10,.55),rgba(4,6,10,.96)),
+        radial-gradient(circle at 50% 20%,rgba(255,190,0,.16),transparent 38%),
+        linear-gradient(180deg,rgba(5,7,11,.48),rgba(5,7,11,.96)),
         url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop")
         center/cover no-repeat;
 }
@@ -75,8 +68,12 @@ body{
     inset:0;
     z-index:-2;
     background:
-        radial-gradient(circle at 50% 40%,rgba(255,193,7,.08),transparent 45%),
-        rgba(0,0,0,.42);
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.35) 0%,
+            rgba(0,0,0,.58) 45%,
+            rgba(0,0,0,.88) 100%
+        );
 }
 
 /* =========================
@@ -84,67 +81,79 @@ body{
 ========================= */
 
 .language-switcher{
-    position:absolute;
-    top:18px;
-    right:18px;
-    z-index:10;
+    position:fixed;
+    top:16px;
+    right:15px;
+    z-index:20;
+
     display:flex;
-    padding:4px;
     gap:3px;
-    background:rgba(12,14,19,.82);
+    padding:4px;
+
+    background:rgba(12,14,19,.88);
     border:1px solid rgba(255,255,255,.14);
     border-radius:12px;
-    backdrop-filter:blur(12px);
+
+    backdrop-filter:blur(14px);
 }
 
 .lang-btn{
     border:0;
     background:transparent;
-    color:#8e95a3;
+    color:#858c99;
     padding:7px 10px;
     border-radius:8px;
-    font-size:11px;
-    font-weight:800;
+
+    font-size:10px;
+    font-weight:900;
+
     cursor:pointer;
-    transition:.2s;
 }
 
 .lang-btn.active{
-    background:#f5b900;
+    background:#f5bd20;
     color:#080808;
 }
 
 /* =========================
-   MAIN CARD
+   PAGE
 ========================= */
 
 .page{
     min-height:100vh;
     width:100%;
+
     display:flex;
-    align-items:center;
     justify-content:center;
-    padding:55px 15px 25px;
+    align-items:center;
+
+    padding:60px 14px 22px;
 }
+
+/* =========================
+   CARD
+========================= */
 
 .card{
     width:100%;
-    max-width:410px;
-    padding:27px 21px 21px;
+    max-width:405px;
+
+    padding:25px 19px 20px;
+
     text-align:center;
 
     background:
         linear-gradient(
             145deg,
-            rgba(24,27,34,.91),
-            rgba(8,10,14,.93)
+            rgba(22,25,32,.94),
+            rgba(7,9,13,.96)
         );
 
-    border:1px solid rgba(255,196,0,.32);
-    border-radius:26px;
+    border:1px solid rgba(255,196,0,.28);
+    border-radius:25px;
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.72),
+        0 28px 75px rgba(0,0,0,.78),
         inset 0 1px 0 rgba(255,255,255,.08);
 
     backdrop-filter:blur(18px);
@@ -152,187 +161,251 @@ body{
 }
 
 /* =========================
-   BRAND
+   VERIFIED BADGE
 ========================= */
 
-.brand{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    margin-bottom:18px;
-}
-
-.brand-icon{
-    width:35px;
-    height:35px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:linear-gradient(145deg,#ffd75a,#d99500);
-    color:#090909;
-
-    font-size:19px;
-    font-weight:900;
-
-    box-shadow:0 5px 18px rgba(255,193,7,.22);
-}
-
-.brand-name{
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:-.5px;
-}
-
-.brand-name span{
-    color:#ffc400;
-}
-
-/* =========================
-   BADGE
-========================= */
-
-.badge{
+.verified-badge{
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:7px;
 
     padding:7px 13px;
-    margin-bottom:16px;
+    margin-bottom:17px;
 
     border-radius:50px;
 
-    background:rgba(255,193,7,.09);
-    border:1px solid rgba(255,193,7,.42);
+    background:rgba(255,193,7,.08);
+    border:1px solid rgba(255,193,7,.4);
 
     color:#ffd34d;
 
     font-size:10px;
-    font-weight:800;
-    letter-spacing:.5px;
+    font-weight:900;
+    letter-spacing:.35px;
     text-transform:uppercase;
 }
 
-.badge-dot{
-    width:7px;
-    height:7px;
+.verified-check{
+    width:16px;
+    height:16px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     border-radius:50%;
-    background:#35e875;
-    box-shadow:0 0 9px rgba(53,232,117,.8);
+
+    background:#ffc400;
+    color:#111;
+
+    font-size:10px;
+    font-weight:950;
 }
 
 /* =========================
-   HEADLINE
+   TITLE
 ========================= */
 
 h1{
     font-size:27px;
-    line-height:1.17;
+    line-height:1.18;
     font-weight:900;
     letter-spacing:-.7px;
+
     margin-bottom:10px;
 }
 
 .highlight{
-    color:#ffc400;
+    color:#ffc52b;
 }
 
 .subtitle{
-    color:#aeb4c1;
-    font-size:14px;
-    line-height:1.5;
-    margin:0 auto 19px;
     max-width:340px;
+    margin:0 auto 19px;
+
+    color:#b1b7c2;
+
+    font-size:13.5px;
+    line-height:1.5;
 }
 
 /* =========================
-   LIVE ACTIVITY
+   ACTIVITY / COUNTER
 ========================= */
 
 .activity-box{
     position:relative;
     overflow:hidden;
 
-    padding:14px 13px;
-    margin-bottom:12px;
+    margin-bottom:14px;
+    padding:14px 12px;
 
-    border-radius:16px;
+    border-radius:17px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,193,7,.075),
-            rgba(0,0,0,.28)
+            rgba(255,193,7,.09),
+            rgba(8,10,14,.48)
         );
 
-    border:1px solid rgba(255,193,7,.19);
+    border:1px solid rgba(255,193,7,.2);
 }
 
-.activity-box::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:70%;
-    height:1px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,205,70,.7),
-        transparent
-    );
-
-    animation:shine 4s linear infinite;
-}
-
-@keyframes shine{
-    0%{left:-100%;}
-    100%{left:130%;}
-}
-
-.activity-title{
-    color:#8f96a3;
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.6px;
-    font-weight:700;
+.activity-label{
     margin-bottom:5px;
+
+    color:#8d95a3;
+
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.55px;
 }
 
 .activity-value{
-    color:#38ef78;
-    font-size:28px;
+    color:#3bed7b;
+
+    font-size:29px;
     line-height:1.1;
     font-weight:950;
     letter-spacing:-.5px;
 
-    text-shadow:0 0 18px rgba(56,239,120,.18);
+    text-shadow:0 0 18px rgba(59,237,123,.18);
 
-    transition:transform .18s ease,opacity .18s ease;
+    transition:
+        transform .18s ease,
+        opacity .18s ease;
 }
 
 .activity-value.updated{
     transform:scale(1.045);
-    opacity:.75;
+    opacity:.72;
 }
 
-.activity-status{
+.activity-note{
     margin-top:5px;
-    color:#777f8d;
+
+    color:#6f7785;
+
+    font-size:9px;
+}
+
+.activity-note-dot{
+    display:inline-block;
+
+    width:6px;
+    height:6px;
+
+    margin-right:4px;
+
+    border-radius:50%;
+
+    background:#3bed7b;
+    box-shadow:0 0 8px rgba(59,237,123,.8);
+}
+
+/* =========================
+   PAYMENT METHODS
+========================= */
+
+.payment-title{
+    margin:2px 0 9px;
+
+    color:#9299a5;
+
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.55px;
+}
+
+.payment-methods{
+    display:flex;
+    gap:9px;
+
+    margin-bottom:14px;
+}
+
+.payment-card{
+    flex:1;
+
+    min-height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:8px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.payment-logo{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    font-size:12px;
+    font-weight:950;
+    letter-spacing:-.5px;
+}
+
+.yape-logo{
+    background:#742cff;
+    color:#fff;
+}
+
+.plin-logo{
+    background:#11b9b1;
+    color:#fff;
+}
+
+.payment-name{
+    font-size:11px;
+    font-weight:900;
+    color:#d7dbe2;
+}
+
+.payment-sub{
+    margin-top:2px;
+
+    font-size:8px;
+    color:#777f8c;
+}
+
+/* =========================
+   FAST WITHDRAWAL
+========================= */
+
+.fast-withdrawal{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+
+    margin-bottom:14px;
+
+    color:#a4abb6;
+
     font-size:10px;
 }
 
-.live-dot{
-    display:inline-block;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:#39e978;
-    margin-right:4px;
-    box-shadow:0 0 7px rgba(57,233,120,.7);
+.fast-icon{
+    color:#ffc400;
+    font-size:13px;
 }
 
 /* =========================
@@ -340,52 +413,61 @@ h1{
 ========================= */
 
 .promo-box{
-    padding:13px;
     margin-bottom:13px;
+    padding:13px;
 
-    background:rgba(255,193,7,.055);
-    border:1px dashed rgba(255,193,7,.48);
     border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,193,7,.08),
+            rgba(255,193,7,.025)
+        );
+
+    border:1px dashed rgba(255,193,7,.42);
 }
 
-.promo-label{
-    color:#999fac;
+.promo-title{
+    margin-bottom:8px;
+
+    color:#969daa;
+
     font-size:10px;
+    font-weight:800;
     text-transform:uppercase;
-    letter-spacing:.5px;
-    margin-bottom:7px;
+    letter-spacing:.45px;
 }
 
 .promo-row{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:8px;
+    gap:9px;
 }
 
 .promo-code{
-    min-width:0;
-    color:#ffd02e;
+    color:#ffd13a;
+
     font-size:19px;
     font-weight:950;
     letter-spacing:2px;
 }
 
 .copy-btn{
-    flex-shrink:0;
+    border:1px solid rgba(255,207,54,.5);
 
-    border:1px solid rgba(255,207,54,.55);
-    background:rgba(255,193,7,.13);
-    color:#ffd338;
+    background:rgba(255,193,7,.12);
+    color:#ffd13a;
 
     border-radius:9px;
+
     padding:7px 10px;
 
     font-size:10px;
     font-weight:900;
 
     cursor:pointer;
-    transition:.2s;
 }
 
 .copy-btn:active{
@@ -400,46 +482,48 @@ h1{
     position:relative;
     overflow:hidden;
 
+    width:100%;
+    min-height:57px;
+
     display:flex;
     align-items:center;
     justify-content:center;
 
-    width:100%;
-
-    min-height:57px;
-
-    border:0;
     border-radius:15px;
 
     background:
         linear-gradient(
             180deg,
-            #ffd32f 0%,
-            #f2a900 100%
+            #ffd633 0%,
+            #f1aa00 100%
         );
 
     color:#080808;
 
     text-decoration:none;
 
-    font-size:16px;
+    font-size:15.5px;
     font-weight:950;
     letter-spacing:.2px;
 
     box-shadow:
-        0 10px 28px rgba(245,174,0,.27),
-        inset 0 1px 0 rgba(255,255,255,.45);
+        0 11px 30px rgba(245,174,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.5);
 
     transition:.18s;
+}
 
-    cursor:pointer;
+.cta-btn:active{
+    transform:scale(.985);
 }
 
 .cta-btn::after{
     content:"";
+
     position:absolute;
     top:0;
     left:-120%;
+
     width:55%;
     height:100%;
 
@@ -451,52 +535,47 @@ h1{
     );
 
     transform:skewX(-20deg);
-    animation:buttonShine 3.4s infinite;
+
+    animation:buttonShine 3.5s infinite;
 }
 
 @keyframes buttonShine{
-    0%,55%{left:-120%;}
-    100%{left:150%;}
-}
 
-.cta-btn:active{
-    transform:scale(.985);
+    0%,55%{
+        left:-120%;
+    }
+
+    100%{
+        left:150%;
+    }
+
 }
 
 /* =========================
-   TRUST ROW
+   FOOTER
 ========================= */
 
-.trust-row{
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    flex-wrap:wrap;
+.footer{
+    margin-top:14px;
 
-    margin-top:15px;
+    color:#5d6571;
 
-    color:#7e8591;
-    font-size:10px;
-}
-
-.trust-item{
-    display:flex;
-    align-items:center;
-    gap:5px;
+    font-size:9px;
+    line-height:1.4;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
 @media(max-width:380px){
 
     .page{
-        padding:52px 11px 18px;
+        padding:58px 10px 16px;
     }
 
     .card{
-        padding:23px 16px 18px;
+        padding:22px 15px 17px;
         border-radius:22px;
     }
 
@@ -512,8 +591,25 @@ h1{
         font-size:25px;
     }
 
-    .brand-name{
-        font-size:20px;
+    .payment-methods{
+        gap:7px;
+    }
+
+    .payment-card{
+        min-height:54px;
+    }
+
+    .payment-logo{
+        width:31px;
+        height:31px;
+    }
+
+    .payment-name{
+        font-size:10px;
+    }
+
+    .promo-code{
+        font-size:17px;
     }
 
 }
@@ -523,7 +619,7 @@ h1{
 
 <body>
 
-<div class="background-image"></div>
+<div class="background-fallback"></div>
 
 <video
     class="video-bg"
@@ -539,13 +635,20 @@ h1{
 
 
 <!-- LANGUAGE -->
+
 <div class="language-switcher">
 
-    <button class="lang-btn active" id="langES">
+    <button
+        class="lang-btn active"
+        id="langES"
+        type="button">
         🇵🇪 ES
     </button>
 
-    <button class="lang-btn" id="langEN">
+    <button
+        class="lang-btn"
+        id="langEN"
+        type="button">
         🇺🇸 EN
     </button>
 
@@ -557,29 +660,14 @@ h1{
 <div class="card">
 
 
-    <!-- BRAND -->
+    <!-- VERIFIED -->
 
-    <div class="brand">
+    <div class="verified-badge">
 
-        <div class="brand-icon">
-            1
-        </div>
+        <span class="verified-check">✓</span>
 
-        <div class="brand-name">
-            1<span>WIN</span>
-        </div>
-
-    </div>
-
-
-    <!-- BADGE -->
-
-    <div class="badge">
-
-        <span class="badge-dot"></span>
-
-        <span id="badgeText">
-            ACCESO DISPONIBLE EN PERÚ
+        <span id="verifiedText">
+            PLATAFORMA VERIFICADA PARA JUGADORES EN PERÚ
         </span>
 
     </div>
@@ -588,31 +676,126 @@ h1{
     <!-- TITLE -->
 
     <h1 id="headline">
-        Tu momento para <span class="highlight">probar suerte</span>
+        ¿Listo para <span class="highlight">probar tu suerte</span> hoy?
     </h1>
 
 
-    <p class="subtitle" id="subtitle">
-        Accede a la plataforma, descubre Aviator y disfruta de una experiencia de juego desde Perú.
+    <p
+        class="subtitle"
+        id="subtitle">
+
+        Ingresa a la plataforma oficial, juega en
+        <strong>Aviator</strong>
+        y disfruta de una experiencia de juego desde Perú.
+
     </p>
 
 
-    <!-- LIVE ACTIVITY -->
+    <!-- ACTIVITY -->
 
     <div class="activity-box">
 
-        <div class="activity-title" id="activityTitle">
-            Actividad de jugadores
+        <div
+            class="activity-label"
+            id="activityLabel">
+
+            Actividad de juego de hoy en Perú
+
         </div>
 
-        <div class="activity-value" id="activityValue">
+        <div
+            class="activity-value"
+            id="activityValue">
+
             S/ 255,479
+
         </div>
 
-        <div class="activity-status" id="activityStatus">
-            <span class="live-dot"></span>
-            <span id="activityStatusText">Actualizado en vivo</span>
+        <div class="activity-note">
+
+            <span class="activity-note-dot"></span>
+
+            <span id="activityNote">
+                Indicador de actividad en vivo
+            </span>
+
         </div>
+
+    </div>
+
+
+    <!-- PAYMENTS -->
+
+    <div
+        class="payment-title"
+        id="paymentTitle">
+
+        Métodos de pago disponibles
+
+    </div>
+
+
+    <div class="payment-methods">
+
+
+        <div class="payment-card">
+
+            <div class="payment-logo yape-logo">
+                Y
+            </div>
+
+            <div>
+                <div class="payment-name">
+                    Yape
+                </div>
+
+                <div
+                    class="payment-sub"
+                    id="yapeSub">
+
+                    Perú
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="payment-card">
+
+            <div class="payment-logo plin-logo">
+                P
+            </div>
+
+            <div>
+                <div class="payment-name">
+                    Plin
+                </div>
+
+                <div
+                    class="payment-sub"
+                    id="plinSub">
+
+                    Perú
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FAST WITHDRAWAL -->
+
+    <div class="fast-withdrawal">
+
+        <span class="fast-icon">⚡</span>
+
+        <span id="fastText">
+            Retiros rápidos disponibles
+        </span>
 
     </div>
 
@@ -621,9 +804,14 @@ h1{
 
     <div class="promo-box">
 
-        <div class="promo-label" id="promoLabel">
-            Código promocional
+        <div
+            class="promo-title"
+            id="promoTitle">
+
+            🎁 Usa el código promocional al registrarte
+
         </div>
+
 
         <div class="promo-row">
 
@@ -635,7 +823,9 @@ h1{
                 class="copy-btn"
                 id="copyBtn"
                 type="button">
-                Copiar
+
+                📋 Copiar
+
             </button>
 
         </div>
@@ -647,45 +837,24 @@ h1{
 
     <a
         id="ctaButton"
-        href="#"
-        class="cta-btn">
+        class="cta-btn"
+        href="#">
 
         <span id="ctaText">
-            ENTRAR Y JUGAR AHORA →
+            ENTRAR Y JUGAR AHORA ➔
         </span>
 
     </a>
 
 
-    <!-- TRUST -->
-
-    <div class="trust-row">
-
-        <div class="trust-item">
-            🔒 <span id="trust1">Acceso seguro</span>
-        </div>
-
-        <div class="trust-item">
-            ⚡ <span id="trust2">Proceso rápido</span>
-        </div>
-
-        <div class="trust-item">
-            🇵🇪 <span id="trust3">Perú</span>
-        </div>
-
-    </div>
-
+    <!-- FOOTER -->
 
     <div
-        id="footerText"
-        style="
-            margin-top:15px;
-            color:#555d69;
-            font-size:9px;
-            line-height:1.4;
-        ">
+        class="footer"
+        id="footerText">
 
-        +18. Juega con responsabilidad.
+        Solo para mayores de 18 años (+18).
+        Juega con responsabilidad.
 
     </div>
 
@@ -709,94 +878,94 @@ const PROMO_CODE =
 
 
 /* =========================================================
-   LANGUAGE DATA
+   TRANSLATIONS
 ========================================================= */
 
 const translations = {
 
     es: {
 
-        badge:
-            "ACCESO DISPONIBLE EN PERÚ",
+        verified:
+            "PLATAFORMA VERIFICADA PARA JUGADORES EN PERÚ",
 
         headline:
-            'Tu momento para <span class="highlight">probar suerte</span>',
+            '¿Listo para <span class="highlight">probar tu suerte</span> hoy?',
 
         subtitle:
-            "Accede a la plataforma, descubre Aviator y disfruta de una experiencia de juego desde Perú.",
+            "Ingresa a la plataforma oficial, juega en Aviator y disfruta de una experiencia de juego desde Perú.",
 
-        activityTitle:
-            "Actividad de jugadores",
+        activityLabel:
+            "Actividad de juego de hoy en Perú",
 
-        activityStatus:
-            "Actualizado en vivo",
+        activityNote:
+            "Indicador de actividad en vivo",
 
-        promoLabel:
-            "Código promocional",
+        paymentTitle:
+            "Métodos de pago disponibles",
 
-        copy:
-            "Copiar",
-
-        copied:
-            "¡Copiado!",
-
-        cta:
-            "ENTRAR Y JUGAR AHORA →",
-
-        trust1:
-            "Acceso seguro",
-
-        trust2:
-            "Proceso rápido",
-
-        trust3:
+        peru:
             "Perú",
 
+        fast:
+            "Retiros rápidos disponibles",
+
+        promo:
+            "🎁 Usa el código promocional al registrarte",
+
+        copy:
+            "📋 Copiar",
+
+        copied:
+            "✓ ¡Copiado!",
+
+        cta:
+            "ENTRAR Y JUGAR AHORA ➔",
+
         footer:
-            "+18. Juega con responsabilidad."
+            "Solo para mayores de 18 años (+18). Juega con responsabilidad."
 
     },
 
     en: {
 
-        badge:
-            "ACCESS AVAILABLE IN PERU",
+        verified:
+            "VERIFIED PLATFORM FOR PLAYERS IN PERU",
 
         headline:
-            'Your moment to <span class="highlight">try your luck</span>',
+            'Ready to <span class="highlight">try your luck</span> today?',
 
         subtitle:
-            "Access the platform, discover Aviator and enjoy a gaming experience from Peru.",
+            "Access the official platform, play Aviator and enjoy a gaming experience from Peru.",
 
-        activityTitle:
-            "Player activity",
+        activityLabel:
+            "Today's gaming activity in Peru",
 
-        activityStatus:
-            "Updated live",
+        activityNote:
+            "Live activity indicator",
 
-        promoLabel:
-            "Promo code",
+        paymentTitle:
+            "Payment methods available",
 
-        copy:
-            "Copy",
-
-        copied:
-            "Copied!",
-
-        cta:
-            "ENTER & PLAY NOW →",
-
-        trust1:
-            "Secure access",
-
-        trust2:
-            "Fast process",
-
-        trust3:
+        peru:
             "Peru",
 
+        fast:
+            "Fast withdrawals available",
+
+        promo:
+            "🎁 Use the promo code when registering",
+
+        copy:
+            "📋 Copy",
+
+        copied:
+            "✓ Copied!",
+
+        cta:
+            "ENTER & PLAY NOW ➔",
+
         footer:
-            "+18. Play responsibly."
+            "For 18+ only. Please play responsibly."
 
     }
 
@@ -813,8 +982,8 @@ const langES =
 const langEN =
     document.getElementById("langEN");
 
-const badgeText =
-    document.getElementById("badgeText");
+const verifiedText =
+    document.getElementById("verifiedText");
 
 const headline =
     document.getElementById("headline");
@@ -822,29 +991,32 @@ const headline =
 const subtitle =
     document.getElementById("subtitle");
 
-const activityTitle =
-    document.getElementById("activityTitle");
+const activityLabel =
+    document.getElementById("activityLabel");
 
-const activityStatusText =
-    document.getElementById("activityStatusText");
+const activityNote =
+    document.getElementById("activityNote");
 
-const promoLabel =
-    document.getElementById("promoLabel");
+const paymentTitle =
+    document.getElementById("paymentTitle");
+
+const yapeSub =
+    document.getElementById("yapeSub");
+
+const plinSub =
+    document.getElementById("plinSub");
+
+const fastText =
+    document.getElementById("fastText");
+
+const promoTitle =
+    document.getElementById("promoTitle");
 
 const copyBtn =
     document.getElementById("copyBtn");
 
 const ctaText =
     document.getElementById("ctaText");
-
-const trust1 =
-    document.getElementById("trust1");
-
-const trust2 =
-    document.getElementById("trust2");
-
-const trust3 =
-    document.getElementById("trust3");
 
 const footerText =
     document.getElementById("footerText");
@@ -857,7 +1029,7 @@ const ctaButton =
 
 
 /* =========================================================
-   CURRENCY / ACTIVITY COUNTER
+   COUNTER
 ========================================================= */
 
 let currentLanguage = "es";
@@ -867,27 +1039,34 @@ let currentCurrency = "PEN";
 let currentValue = 255479;
 
 
-/*
-    Значения являются визуальным индикатором активности,
-    а не заявлением о фактически обработанных выплатах.
-*/
-
 const currencyData = {
 
     PEN: {
-        symbol: "S/",
-        min: 180000,
-        max: 420000,
-        minAdd: 40,
-        maxAdd: 180
+
+        symbol:"S/",
+
+        min:180000,
+
+        max:420000,
+
+        minAdd:40,
+
+        maxAdd:180
+
     },
 
     USD: {
-        symbol: "$",
-        min: 50000,
-        max: 120000,
-        minAdd: 8,
-        maxAdd: 35
+
+        symbol:"$",
+
+        min:50000,
+
+        max:120000,
+
+        minAdd:8,
+
+        maxAdd:35
+
     }
 
 };
@@ -898,24 +1077,6 @@ function randomNumber(min,max){
     return Math.floor(
         Math.random() * (max - min + 1)
     ) + min;
-
-}
-
-
-function setInitialCurrency(currency){
-
-    currentCurrency = currency;
-
-    const data =
-        currencyData[currentCurrency];
-
-    currentValue =
-        randomNumber(
-            data.min,
-            data.max
-        );
-
-    renderCounter();
 
 }
 
@@ -937,7 +1098,18 @@ function formatCurrency(value){
 }
 
 
-function renderCounter(){
+function setInitialCurrency(currency){
+
+    currentCurrency = currency;
+
+    const data =
+        currencyData[currency];
+
+    currentValue =
+        randomNumber(
+            data.min,
+            data.max
+        );
 
     activityValue.textContent =
         formatCurrency(currentValue);
@@ -958,6 +1130,7 @@ function updateCounter(){
 
     currentValue += increase;
 
+
     if(currentValue > data.max){
 
         currentValue =
@@ -968,9 +1141,12 @@ function updateCounter(){
 
     }
 
+
     activityValue.classList.add("updated");
 
-    renderCounter();
+    activityValue.textContent =
+        formatCurrency(currentValue);
+
 
     setTimeout(function(){
 
@@ -979,19 +1155,16 @@ function updateCounter(){
     },220);
 
 
-    const nextUpdate =
-        randomNumber(2500,5000);
-
     setTimeout(
         updateCounter,
-        nextUpdate
+        randomNumber(2500,5000)
     );
 
 }
 
 
 /* =========================================================
-   LANGUAGE SWITCH
+   LANGUAGE
 ========================================================= */
 
 function setLanguage(language){
@@ -1001,8 +1174,9 @@ function setLanguage(language){
     const t =
         translations[language];
 
-    badgeText.innerHTML =
-        t.badge;
+
+    verifiedText.textContent =
+        t.verified;
 
     headline.innerHTML =
         t.headline;
@@ -1010,29 +1184,32 @@ function setLanguage(language){
     subtitle.textContent =
         t.subtitle;
 
-    activityTitle.textContent =
-        t.activityTitle;
+    activityLabel.textContent =
+        t.activityLabel;
 
-    activityStatusText.textContent =
-        t.activityStatus;
+    activityNote.textContent =
+        t.activityNote;
 
-    promoLabel.textContent =
-        t.promoLabel;
+    paymentTitle.textContent =
+        t.paymentTitle;
+
+    yapeSub.textContent =
+        t.peru;
+
+    plinSub.textContent =
+        t.peru;
+
+    fastText.textContent =
+        t.fast;
+
+    promoTitle.textContent =
+        t.promo;
 
     copyBtn.textContent =
         t.copy;
 
     ctaText.textContent =
         t.cta;
-
-    trust1.textContent =
-        t.trust1;
-
-    trust2.textContent =
-        t.trust2;
-
-    trust3.textContent =
-        t.trust3;
 
     footerText.textContent =
         t.footer;
@@ -1113,26 +1290,22 @@ copyBtn.addEventListener(
 
             textarea.select();
 
-            document.execCommand(
-                "copy"
-            );
+            document.execCommand("copy");
 
             textarea.remove();
 
         }
 
 
-        const originalText =
-            translations[currentLanguage].copy;
-
         copyBtn.textContent =
             translations[currentLanguage].copied;
+
 
         setTimeout(
             function(){
 
                 copyBtn.textContent =
-                    originalText;
+                    translations[currentLanguage].copy;
 
             },
             1500
@@ -1143,7 +1316,7 @@ copyBtn.addEventListener(
 
 
 /* =========================================================
-   CTA + GA4
+   CTA
 ========================================================= */
 
 ctaButton.href =
@@ -1164,11 +1337,10 @@ ctaButton.addEventListener(
                 "continue_click",
                 {
 
-                    event_category:
-                        "CTA",
+                    event_category:"CTA",
 
                     event_label:
-                        "1WIN Landing Page",
+                        "Verified Platform Landing Page",
 
                     language:
                         currentLanguage,
