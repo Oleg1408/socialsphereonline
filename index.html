@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Social Sphere</title>
+<title>Acceso Oficial Perú 🇵🇪</title>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
-
 <script>
 window.dataLayer = window.dataLayer || [];
 
@@ -17,472 +16,1198 @@ function gtag(){
 }
 
 gtag('js', new Date());
-
 gtag('config', 'G-H2DNL0SX0P');
 </script>
 
-
 <style>
 
-body, html{
-
+*{
+    box-sizing:border-box;
     margin:0;
-
     padding:0;
-
-    height:100%;
-
-    font-family:Arial,sans-serif;
-
-    overflow:hidden;
-
+    -webkit-tap-highlight-color:transparent;
 }
 
+html,
+body{
+    width:100%;
+    min-height:100%;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:#07090d;
+    color:#fff;
+}
 
-/* Фоновое видео */
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
 
 .video-bg{
-
     position:fixed;
-
     top:0;
     left:0;
-
     width:100%;
     height:100%;
-
-
     object-fit:cover;
-
-
-    object-position:center 40%;
-
-
-    z-index:-1;
-
-
-    filter:blur(3px);
-
-
-    transform:scale(1);
-
+    object-position:center center;
+    z-index:-3;
+    filter:blur(2px);
+    transform:scale(1.04);
 }
 
-
-
-/* Затемнение */
+.background-image{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255,190,0,.13), transparent 35%),
+        linear-gradient(180deg,rgba(4,6,10,.55),rgba(4,6,10,.96)),
+        url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop")
+        center/cover no-repeat;
+}
 
 .overlay{
-
     position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
-
-
-    background:rgba(0,0,0,0.30);
-
-
-    z-index:0;
-
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(circle at 50% 40%,rgba(255,193,7,.08),transparent 45%),
+        rgba(0,0,0,.42);
 }
 
+/* =========================
+   LANGUAGE
+========================= */
 
-
-/* Контент */
-
-.content{
-
-    position:relative;
-
-    z-index:1;
-
-
-    height:100%;
-
-
+.language-switcher{
+    position:absolute;
+    top:18px;
+    right:18px;
+    z-index:10;
     display:flex;
+    padding:4px;
+    gap:3px;
+    background:rgba(12,14,19,.82);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;
+    backdrop-filter:blur(12px);
+}
 
-    flex-direction:column;
+.lang-btn{
+    border:0;
+    background:transparent;
+    color:#8e95a3;
+    padding:7px 10px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
 
+.lang-btn.active{
+    background:#f5b900;
+    color:#080808;
+}
 
-    justify-content:center;
+/* =========================
+   MAIN CARD
+========================= */
 
-
+.page{
+    min-height:100vh;
+    width:100%;
+    display:flex;
     align-items:center;
+    justify-content:center;
+    padding:55px 15px 25px;
+}
 
-
-    color:#fff;
-
-
+.card{
+    width:100%;
+    max-width:410px;
+    padding:27px 21px 21px;
     text-align:center;
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24,27,34,.91),
+            rgba(8,10,14,.93)
+        );
 
-    padding:0 20px;
+    border:1px solid rgba(255,196,0,.32);
+    border-radius:26px;
 
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.72),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 }
 
+/* =========================
+   BRAND
+========================= */
 
-
-h1{
-
-    font-size:2.6em;
-
-    margin-bottom:0.4em;
-
-    font-weight:700;
-
-}
-
-
-
-p{
-
-    font-size:1.2em;
-
-    margin-bottom:1.6em;
-
-    max-width:500px;
-
-}
-
-
-/* Online indicator */
-
-.online-status{
-
+.brand{
     display:flex;
-
     align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin-bottom:18px;
+}
 
+.brand-icon{
+    width:35px;
+    height:35px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
     justify-content:center;
 
-    gap:8px;
+    background:linear-gradient(145deg,#ffd75a,#d99500);
+    color:#090909;
 
-    font-size:1.05em;
+    font-size:19px;
+    font-weight:900;
 
-    margin-top:-0.7em;
-
-    margin-bottom:1.6em;
-
+    box-shadow:0 5px 18px rgba(255,193,7,.22);
 }
 
+.brand-name{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-.5px;
+}
 
+.brand-name span{
+    color:#ffc400;
+}
 
-.online-dot{
+/* =========================
+   BADGE
+========================= */
 
-    width:9px;
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
 
-    height:9px;
+    padding:7px 13px;
+    margin-bottom:16px;
 
-    background:#35d05f;
+    border-radius:50px;
 
+    background:rgba(255,193,7,.09);
+    border:1px solid rgba(255,193,7,.42);
+
+    color:#ffd34d;
+
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
     border-radius:50%;
+    background:#35e875;
+    box-shadow:0 0 9px rgba(53,232,117,.8);
+}
 
+/* =========================
+   HEADLINE
+========================= */
+
+h1{
+    font-size:27px;
+    line-height:1.17;
+    font-weight:900;
+    letter-spacing:-.7px;
+    margin-bottom:10px;
+}
+
+.highlight{
+    color:#ffc400;
+}
+
+.subtitle{
+    color:#aeb4c1;
+    font-size:14px;
+    line-height:1.5;
+    margin:0 auto 19px;
+    max-width:340px;
+}
+
+/* =========================
+   LIVE ACTIVITY
+========================= */
+
+.activity-box{
+    position:relative;
+    overflow:hidden;
+
+    padding:14px 13px;
+    margin-bottom:12px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,193,7,.075),
+            rgba(0,0,0,.28)
+        );
+
+    border:1px solid rgba(255,193,7,.19);
+}
+
+.activity-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:70%;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,205,70,.7),
+        transparent
+    );
+
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    0%{left:-100%;}
+    100%{left:130%;}
+}
+
+.activity-title{
+    color:#8f96a3;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.activity-value{
+    color:#38ef78;
+    font-size:28px;
+    line-height:1.1;
+    font-weight:950;
+    letter-spacing:-.5px;
+
+    text-shadow:0 0 18px rgba(56,239,120,.18);
+
+    transition:transform .18s ease,opacity .18s ease;
+}
+
+.activity-value.updated{
+    transform:scale(1.045);
+    opacity:.75;
+}
+
+.activity-status{
+    margin-top:5px;
+    color:#777f8d;
+    font-size:10px;
+}
+
+.live-dot{
     display:inline-block;
-
-    box-shadow:0 0 8px rgba(53,208,95,0.8);
-
-    animation:pulse 1.8s infinite;
-
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#39e978;
+    margin-right:4px;
+    box-shadow:0 0 7px rgba(57,233,120,.7);
 }
 
+/* =========================
+   PROMO
+========================= */
 
+.promo-box{
+    padding:13px;
+    margin-bottom:13px;
 
-@keyframes pulse{
-
-    0%,100%{
-
-        opacity:1;
-
-        transform:scale(1);
-
-    }
-
-    50%{
-
-        opacity:0.65;
-
-        transform:scale(0.88);
-
-    }
-
+    background:rgba(255,193,7,.055);
+    border:1px dashed rgba(255,193,7,.48);
+    border-radius:15px;
 }
 
+.promo-label{
+    color:#999fac;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:7px;
+}
 
+.promo-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
 
-.cta-btn{
+.promo-code{
+    min-width:0;
+    color:#ffd02e;
+    font-size:19px;
+    font-weight:950;
+    letter-spacing:2px;
+}
 
-    background:#ff5a5f;
+.copy-btn{
+    flex-shrink:0;
 
-    color:#fff;
+    border:1px solid rgba(255,207,54,.55);
+    background:rgba(255,193,7,.13);
+    color:#ffd338;
 
+    border-radius:9px;
+    padding:7px 10px;
 
-    font-size:1.3em;
-
-
-    padding:16px 34px;
-
-
-    border:none;
-
-
-    border-radius:10px;
-
+    font-size:10px;
+    font-weight:900;
 
     cursor:pointer;
+    transition:.2s;
+}
 
+.copy-btn:active{
+    transform:scale(.95);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta-btn{
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+
+    min-height:57px;
+
+    border:0;
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffd32f 0%,
+            #f2a900 100%
+        );
+
+    color:#080808;
 
     text-decoration:none;
 
+    font-size:16px;
+    font-weight:950;
+    letter-spacing:.2px;
 
-    font-weight:bold;
+    box-shadow:
+        0 10px 28px rgba(245,174,0,.27),
+        inset 0 1px 0 rgba(255,255,255,.45);
 
+    transition:.18s;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.4);
-
+    cursor:pointer;
 }
 
+.cta-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:55%;
+    height:100%;
 
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.32),
+        transparent
+    );
 
-.cta-btn:hover{
-
-    background:#e14c50;
-
+    transform:skewX(-20deg);
+    animation:buttonShine 3.4s infinite;
 }
 
-
-
-/* Мобильные устройства */
-
-@media(max-width:768px){
-
-
-.video-bg{
-
-
-    /*
-    Чуть больше показывает верх кадра
-    без уменьшения видео
-    */
-
-    object-position:center 35%;
-
-
-    transform:scale(1);
-
-
+@keyframes buttonShine{
+    0%,55%{left:-120%;}
+    100%{left:150%;}
 }
 
-
-
-h1{
-
-    font-size:2.2em;
-
+.cta-btn:active{
+    transform:scale(.985);
 }
 
+/* =========================
+   TRUST ROW
+========================= */
 
+.trust-row{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
 
-p{
+    margin-top:15px;
 
-    font-size:1.05em;
-
-    padding:0 10px;
-
+    color:#7e8591;
+    font-size:10px;
 }
 
-
-
-.cta-btn{
-
-    font-size:1.15em;
-
-    padding:15px 30px;
-
+.trust-item{
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:380px){
+
+    .page{
+        padding:52px 11px 18px;
+    }
+
+    .card{
+        padding:23px 16px 18px;
+        border-radius:22px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    .subtitle{
+        font-size:13px;
+    }
+
+    .activity-value{
+        font-size:25px;
+    }
+
+    .brand-name{
+        font-size:20px;
+    }
 
 }
-
-
 
 </style>
-
-
 </head>
-
 
 <body>
 
+<div class="background-image"></div>
 
-
-<video 
-class="video-bg" 
-autoplay 
-muted 
-loop 
-playsinline
-webkit-playsinline>
-
-<source src="video.mp4" type="video/mp4">
-
+<video
+    class="video-bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline>
+    <source src="video.mp4" type="video/mp4">
 </video>
-
-
 
 <div class="overlay"></div>
 
 
+<!-- LANGUAGE -->
+<div class="language-switcher">
 
-<div class="content">
+    <button class="lang-btn active" id="langES">
+        🇵🇪 ES
+    </button>
 
-
-<h1>
-Meet Someone Tonight
-</h1>
-
-
-<p>
-Singles looking for something more
-</p>
-
-
-<div class="online-status">
-
-<span class="online-dot"></span>
-
-<span id="onlineCount">37 women online now</span>
+    <button class="lang-btn" id="langEN">
+        🇺🇸 EN
+    </button>
 
 </div>
 
 
-<a id="ctaButton" href="#" class="cta-btn">
+<div class="page">
 
-See Who's Online
+<div class="card">
 
-</a>
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            1
+        </div>
+
+        <div class="brand-name">
+            1<span>WIN</span>
+        </div>
+
+    </div>
+
+
+    <!-- BADGE -->
+
+    <div class="badge">
+
+        <span class="badge-dot"></span>
+
+        <span id="badgeText">
+            ACCESO DISPONIBLE EN PERÚ
+        </span>
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h1 id="headline">
+        Tu momento para <span class="highlight">probar suerte</span>
+    </h1>
+
+
+    <p class="subtitle" id="subtitle">
+        Accede a la plataforma, descubre Aviator y disfruta de una experiencia de juego desde Perú.
+    </p>
+
+
+    <!-- LIVE ACTIVITY -->
+
+    <div class="activity-box">
+
+        <div class="activity-title" id="activityTitle">
+            Actividad de jugadores
+        </div>
+
+        <div class="activity-value" id="activityValue">
+            S/ 255,479
+        </div>
+
+        <div class="activity-status" id="activityStatus">
+            <span class="live-dot"></span>
+            <span id="activityStatusText">Actualizado en vivo</span>
+        </div>
+
+    </div>
+
+
+    <!-- PROMO -->
+
+    <div class="promo-box">
+
+        <div class="promo-label" id="promoLabel">
+            Código promocional
+        </div>
+
+        <div class="promo-row">
+
+            <div class="promo-code">
+                GANASOLES
+            </div>
+
+            <button
+                class="copy-btn"
+                id="copyBtn"
+                type="button">
+                Copiar
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CTA -->
+
+    <a
+        id="ctaButton"
+        href="#"
+        class="cta-btn">
+
+        <span id="ctaText">
+            ENTRAR Y JUGAR AHORA →
+        </span>
+
+    </a>
+
+
+    <!-- TRUST -->
+
+    <div class="trust-row">
+
+        <div class="trust-item">
+            🔒 <span id="trust1">Acceso seguro</span>
+        </div>
+
+        <div class="trust-item">
+            ⚡ <span id="trust2">Proceso rápido</span>
+        </div>
+
+        <div class="trust-item">
+            🇵🇪 <span id="trust3">Perú</span>
+        </div>
+
+    </div>
+
+
+    <div
+        id="footerText"
+        style="
+            margin-top:15px;
+            color:#555d69;
+            font-size:9px;
+            line-height:1.4;
+        ">
+
+        +18. Juega con responsabilidad.
+
+    </div>
 
 
 </div>
 
+</div>
 
 
 <script>
 
+/* =========================================================
+   CONFIG
+========================================================= */
 
-const offerLink = "https://t.aslr1.com/396873/7346?aff_sub5=SF_006OG000004lmDN";
+const OFFER_LINK =
+    "https://w-one477.com/v3/aviator-fire?p=349u";
 
-const btn = document.getElementById("ctaButton");
-
-
-btn.href = offerLink;
-
-
-
-btn.addEventListener("click", function(e){
+const PROMO_CODE =
+    "GANASOLES";
 
 
-    e.preventDefault();
+/* =========================================================
+   LANGUAGE DATA
+========================================================= */
 
+const translations = {
 
-    if(typeof gtag === "function"){
+    es: {
 
+        badge:
+            "ACCESO DISPONIBLE EN PERÚ",
 
-        gtag("event","continue_click",{
+        headline:
+            'Tu momento para <span class="highlight">probar suerte</span>',
 
+        subtitle:
+            "Accede a la plataforma, descubre Aviator y disfruta de una experiencia de juego desde Perú.",
 
-            event_category:"CTA",
+        activityTitle:
+            "Actividad de jugadores",
 
-            event_label:"See Who's Online Button"
+        activityStatus:
+            "Actualizado en vivo",
 
+        promoLabel:
+            "Código promocional",
 
-        });
+        copy:
+            "Copiar",
 
+        copied:
+            "¡Copiado!",
+
+        cta:
+            "ENTRAR Y JUGAR AHORA →",
+
+        trust1:
+            "Acceso seguro",
+
+        trust2:
+            "Proceso rápido",
+
+        trust3:
+            "Perú",
+
+        footer:
+            "+18. Juega con responsabilidad."
+
+    },
+
+    en: {
+
+        badge:
+            "ACCESS AVAILABLE IN PERU",
+
+        headline:
+            'Your moment to <span class="highlight">try your luck</span>',
+
+        subtitle:
+            "Access the platform, discover Aviator and enjoy a gaming experience from Peru.",
+
+        activityTitle:
+            "Player activity",
+
+        activityStatus:
+            "Updated live",
+
+        promoLabel:
+            "Promo code",
+
+        copy:
+            "Copy",
+
+        copied:
+            "Copied!",
+
+        cta:
+            "ENTER & PLAY NOW →",
+
+        trust1:
+            "Secure access",
+
+        trust2:
+            "Fast process",
+
+        trust3:
+            "Peru",
+
+        footer:
+            "+18. Play responsibly."
 
     }
 
+};
 
 
-    setTimeout(function(){
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const langES =
+    document.getElementById("langES");
+
+const langEN =
+    document.getElementById("langEN");
+
+const badgeText =
+    document.getElementById("badgeText");
+
+const headline =
+    document.getElementById("headline");
+
+const subtitle =
+    document.getElementById("subtitle");
+
+const activityTitle =
+    document.getElementById("activityTitle");
+
+const activityStatusText =
+    document.getElementById("activityStatusText");
+
+const promoLabel =
+    document.getElementById("promoLabel");
+
+const copyBtn =
+    document.getElementById("copyBtn");
+
+const ctaText =
+    document.getElementById("ctaText");
+
+const trust1 =
+    document.getElementById("trust1");
+
+const trust2 =
+    document.getElementById("trust2");
+
+const trust3 =
+    document.getElementById("trust3");
+
+const footerText =
+    document.getElementById("footerText");
+
+const activityValue =
+    document.getElementById("activityValue");
+
+const ctaButton =
+    document.getElementById("ctaButton");
 
 
-        window.location.href = offerLink;
+/* =========================================================
+   CURRENCY / ACTIVITY COUNTER
+========================================================= */
 
+let currentLanguage = "es";
 
-    },250);
+let currentCurrency = "PEN";
 
+let currentValue = 255479;
 
-
-});
-
-
-
-/* Динамический online-счётчик */
-
-const onlineCount = document.getElementById("onlineCount");
 
 /*
-   При каждом новом открытии страницы
-   стартовое значение случайное: 10–115
+    Значения являются визуальным индикатором активности,
+    а не заявлением о фактически обработанных выплатах.
 */
 
-let currentCount = Math.floor(Math.random() * 106) + 10;
+const currencyData = {
 
+    PEN: {
+        symbol: "S/",
+        min: 180000,
+        max: 420000,
+        minAdd: 40,
+        maxAdd: 180
+    },
 
-/*
-   Сразу показываем новое значение,
-   чтобы 37 не появлялось даже на мгновение
-*/
-
-onlineCount.textContent = currentCount + " women online now";
-
-
-function updateOnlineCount(){
-
-    /*
-       Случайное изменение от -5 до +5
-    */
-
-    const change = Math.floor(Math.random() * 11) - 5;
-
-    currentCount += change;
-
-
-    /*
-       Минимум — 10
-       Максимум — 115
-    */
-
-    if(currentCount < 10){
-
-        currentCount = 10;
-
+    USD: {
+        symbol: "$",
+        min: 50000,
+        max: 120000,
+        minAdd: 8,
+        maxAdd: 35
     }
 
-
-    if(currentCount > 115){
-
-        currentCount = 115;
-
-    }
+};
 
 
-    onlineCount.textContent = currentCount + " women online now";
+function randomNumber(min,max){
+
+    return Math.floor(
+        Math.random() * (max - min + 1)
+    ) + min;
 
 }
 
 
-setInterval(updateOnlineCount, 10000);
+function setInitialCurrency(currency){
 
+    currentCurrency = currency;
+
+    const data =
+        currencyData[currentCurrency];
+
+    currentValue =
+        randomNumber(
+            data.min,
+            data.max
+        );
+
+    renderCounter();
+
+}
+
+
+function formatCurrency(value){
+
+    if(currentCurrency === "PEN"){
+
+        return "S/ " +
+            Math.floor(value)
+            .toLocaleString("es-PE");
+
+    }
+
+    return "$" +
+        Math.floor(value)
+        .toLocaleString("en-US");
+
+}
+
+
+function renderCounter(){
+
+    activityValue.textContent =
+        formatCurrency(currentValue);
+
+}
+
+
+function updateCounter(){
+
+    const data =
+        currencyData[currentCurrency];
+
+    const increase =
+        randomNumber(
+            data.minAdd,
+            data.maxAdd
+        );
+
+    currentValue += increase;
+
+    if(currentValue > data.max){
+
+        currentValue =
+            randomNumber(
+                data.min,
+                data.max
+            );
+
+    }
+
+    activityValue.classList.add("updated");
+
+    renderCounter();
+
+    setTimeout(function(){
+
+        activityValue.classList.remove("updated");
+
+    },220);
+
+
+    const nextUpdate =
+        randomNumber(2500,5000);
+
+    setTimeout(
+        updateCounter,
+        nextUpdate
+    );
+
+}
+
+
+/* =========================================================
+   LANGUAGE SWITCH
+========================================================= */
+
+function setLanguage(language){
+
+    currentLanguage = language;
+
+    const t =
+        translations[language];
+
+    badgeText.innerHTML =
+        t.badge;
+
+    headline.innerHTML =
+        t.headline;
+
+    subtitle.textContent =
+        t.subtitle;
+
+    activityTitle.textContent =
+        t.activityTitle;
+
+    activityStatusText.textContent =
+        t.activityStatus;
+
+    promoLabel.textContent =
+        t.promoLabel;
+
+    copyBtn.textContent =
+        t.copy;
+
+    ctaText.textContent =
+        t.cta;
+
+    trust1.textContent =
+        t.trust1;
+
+    trust2.textContent =
+        t.trust2;
+
+    trust3.textContent =
+        t.trust3;
+
+    footerText.textContent =
+        t.footer;
+
+
+    if(language === "es"){
+
+        langES.classList.add("active");
+        langEN.classList.remove("active");
+
+        document.documentElement.lang = "es";
+
+        setInitialCurrency("PEN");
+
+    }
+
+    else{
+
+        langEN.classList.add("active");
+        langES.classList.remove("active");
+
+        document.documentElement.lang = "en";
+
+        setInitialCurrency("USD");
+
+    }
+
+}
+
+
+langES.addEventListener(
+    "click",
+    function(){
+
+        setLanguage("es");
+
+    }
+);
+
+
+langEN.addEventListener(
+    "click",
+    function(){
+
+        setLanguage("en");
+
+    }
+);
+
+
+/* =========================================================
+   COPY PROMO
+========================================================= */
+
+copyBtn.addEventListener(
+    "click",
+    async function(){
+
+        try{
+
+            await navigator.clipboard.writeText(
+                PROMO_CODE
+            );
+
+        }
+
+        catch(error){
+
+            const textarea =
+                document.createElement("textarea");
+
+            textarea.value =
+                PROMO_CODE;
+
+            document.body.appendChild(
+                textarea
+            );
+
+            textarea.select();
+
+            document.execCommand(
+                "copy"
+            );
+
+            textarea.remove();
+
+        }
+
+
+        const originalText =
+            translations[currentLanguage].copy;
+
+        copyBtn.textContent =
+            translations[currentLanguage].copied;
+
+        setTimeout(
+            function(){
+
+                copyBtn.textContent =
+                    originalText;
+
+            },
+            1500
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CTA + GA4
+========================================================= */
+
+ctaButton.href =
+    OFFER_LINK;
+
+
+ctaButton.addEventListener(
+    "click",
+    function(e){
+
+        e.preventDefault();
+
+
+        if(typeof gtag === "function"){
+
+            gtag(
+                "event",
+                "continue_click",
+                {
+
+                    event_category:
+                        "CTA",
+
+                    event_label:
+                        "1WIN Landing Page",
+
+                    language:
+                        currentLanguage,
+
+                    currency:
+                        currentCurrency
+
+                }
+            );
+
+        }
+
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    OFFER_LINK;
+
+            },
+            250
+        );
+
+    }
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+setLanguage("es");
+
+setTimeout(
+    updateCounter,
+    3000
+);
 
 </script>
 
-
-
 </body>
-
 </html>
