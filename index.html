@@ -7,9 +7,14 @@
 <title>Acceso Oficial Perú 🇵🇪</title>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
 gtag('js', new Date());
 gtag('config', 'G-H2DNL0SX0P');
 </script>
@@ -23,7 +28,8 @@ gtag('config', 'G-H2DNL0SX0P');
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
     width:100%;
     min-height:100%;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
@@ -56,9 +62,18 @@ body{
     position:fixed;
     inset:0;
     z-index:-4;
+
     background:
-        radial-gradient(circle at 50% 20%,rgba(255,190,0,.16),transparent 38%),
-        linear-gradient(180deg,rgba(5,7,11,.48),rgba(5,7,11,.96)),
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,190,0,.16),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(5,7,11,.48),
+            rgba(5,7,11,.96)
+        ),
         url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop")
         center/cover no-repeat;
 }
@@ -67,6 +82,7 @@ body{
     position:fixed;
     inset:0;
     z-index:-2;
+
     background:
         linear-gradient(
             180deg,
@@ -88,6 +104,7 @@ body{
 
     display:flex;
     gap:3px;
+
     padding:4px;
 
     background:rgba(12,14,19,.88);
@@ -101,7 +118,9 @@ body{
     border:0;
     background:transparent;
     color:#858c99;
+
     padding:7px 10px;
+
     border-radius:8px;
 
     font-size:10px;
@@ -527,12 +546,13 @@ h1{
     width:55%;
     height:100%;
 
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.32),
-        transparent
-    );
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.32),
+            transparent
+        );
 
     transform:skewX(-20deg);
 
@@ -628,7 +648,9 @@ h1{
     loop
     playsinline
     webkit-playsinline>
+
     <source src="video.mp4" type="video/mp4">
+
 </video>
 
 <div class="overlay"></div>
@@ -642,14 +664,18 @@ h1{
         class="lang-btn active"
         id="langES"
         type="button">
+
         🇵🇪 ES
+
     </button>
 
     <button
         class="lang-btn"
         id="langEN"
         type="button">
+
         🇺🇸 EN
+
     </button>
 
 </div>
@@ -676,9 +702,15 @@ h1{
     <!-- TITLE -->
 
     <h1 id="headline">
-        ¿Listo para <span class="highlight">probar tu suerte</span> hoy?
+        ¿Listo para
+        <span class="highlight">
+            probar tu suerte
+        </span>
+        hoy?
     </h1>
 
+
+    <!-- SUBTITLE -->
 
     <p
         class="subtitle"
@@ -737,7 +769,6 @@ h1{
 
     <div class="payment-methods">
 
-
         <div class="payment-card">
 
             <div class="payment-logo yape-logo">
@@ -745,6 +776,7 @@ h1{
             </div>
 
             <div>
+
                 <div class="payment-name">
                     Yape
                 </div>
@@ -756,6 +788,7 @@ h1{
                     Perú
 
                 </div>
+
             </div>
 
         </div>
@@ -768,6 +801,7 @@ h1{
             </div>
 
             <div>
+
                 <div class="payment-name">
                     Plin
                 </div>
@@ -779,10 +813,10 @@ h1{
                     Perú
 
                 </div>
+
             </div>
 
         </div>
-
 
     </div>
 
@@ -791,7 +825,9 @@ h1{
 
     <div class="fast-withdrawal">
 
-        <span class="fast-icon">⚡</span>
+        <span class="fast-icon">
+            ⚡
+        </span>
 
         <span id="fastText">
             Retiros rápidos disponibles
@@ -811,7 +847,6 @@ h1{
             🎁 Usa el código promocional al registrarte
 
         </div>
-
 
         <div class="promo-row">
 
@@ -878,6 +913,14 @@ const PROMO_CODE =
 
 
 /* =========================================================
+   STORAGE
+========================================================= */
+
+const STORAGE_KEY =
+    "citytalks_daily_activity_v1";
+
+
+/* =========================================================
    TRANSLATIONS
 ========================================================= */
 
@@ -925,6 +968,7 @@ const translations = {
             "Solo para mayores de 18 años (+18). Juega con responsabilidad."
 
     },
+
 
     en: {
 
@@ -1029,133 +1073,413 @@ const ctaButton =
 
 
 /* =========================================================
-   COUNTER
+   COUNTER CONFIG
 ========================================================= */
 
 let currentLanguage = "es";
-let currentCurrency = "PEN";
+
+/*
+   Основная сумма всегда хранится в PEN.
+
+   Поэтому:
+   ES -> показывает PEN
+   EN -> показывает ту же сумму, конвертированную в USD
+
+   Переключение языка НЕ создаёт новую сумму.
+*/
+
 let currentValue = 255479;
 
 
-const currencyData = {
+/*
+   Курс используется только для визуального
+   отображения английской версии.
 
-    PEN: {
+   Например:
 
-        symbol:"S/",
+   S/ 255,479
+   ↓
+   $68,128
 
-        min:180000,
+   Сама сохранённая сумма остаётся:
+   255479 PEN
+*/
 
-        max:420000,
-
-        minAdd:40,
-
-        maxAdd:180
-
-    },
-
-    USD: {
-
-        symbol:"$",
-
-        min:50000,
-
-        max:120000,
-
-        minAdd:8,
-
-        maxAdd:35
-
-    }
-
-};
+const PEN_TO_USD =
+    3.75;
 
 
-function randomNumber(min,max){
+/* =========================================================
+   CURRENCY
+========================================================= */
 
-    return Math.floor(
-        Math.random() * (max - min + 1)
-    ) + min;
+function formatPEN(value){
 
-}
-
-
-function formatCurrency(value){
-
-    if(currentCurrency === "PEN"){
-
-        return "S/ " +
-            Math.floor(value)
-            .toLocaleString("es-PE");
-
-    }
-
-    return "$" +
+    return "S/ " +
         Math.floor(value)
-        .toLocaleString("en-US");
+        .toLocaleString("es-PE");
 
 }
 
 
-function setInitialCurrency(currency){
+function formatUSD(value){
 
-    currentCurrency = currency;
-
-    const data =
-        currencyData[currency];
-
-    currentValue =
-        randomNumber(
-            data.min,
-            data.max
+    const usd =
+        Math.floor(
+            value / PEN_TO_USD
         );
 
-    activityValue.textContent =
-        formatCurrency(currentValue);
+    return "$" +
+        usd.toLocaleString("en-US");
 
 }
 
+
+/*
+   Эта функция отвечает только за отображение.
+
+   Она НЕ изменяет currentValue.
+*/
+
+function renderCounter(){
+
+    if(currentLanguage === "es"){
+
+        activityValue.textContent =
+            formatPEN(currentValue);
+
+    }
+
+    else{
+
+        activityValue.textContent =
+            formatUSD(currentValue);
+
+    }
+
+}
+
+
+/* =========================================================
+   PERU DATE
+========================================================= */
+
+/*
+   Получаем текущую календарную дату именно
+   по времени Перу.
+
+   Важно:
+
+   Это НЕ время пользователя.
+
+   Даже если посетитель находится в США,
+   Европе или Украине, дата определяется
+   по America/Lima.
+*/
+
+function getPeruDate(){
+
+    return new Intl.DateTimeFormat(
+        "en-CA",
+        {
+            timeZone:"America/Lima",
+            year:"numeric",
+            month:"2-digit",
+            day:"2-digit"
+        }
+    ).format(
+        new Date()
+    );
+
+}
+
+
+/* =========================================================
+   DAILY DATA
+========================================================= */
+
+function createNewDailyData(){
+
+    /*
+       Новый стартовый показатель.
+
+       Он создаётся только один раз
+       при начале нового дня в Перу.
+    */
+
+    const startValue =
+        Math.floor(
+            Math.random() *
+            (420000 - 180000 + 1)
+        ) + 180000;
+
+
+    const data = {
+
+        date:
+            getPeruDate(),
+
+        value:
+            startValue
+
+    };
+
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+
+    currentValue =
+        startValue;
+
+}
+
+
+/* =========================================================
+   LOAD DAILY DATA
+========================================================= */
+
+function loadDailyData(){
+
+    const today =
+        getPeruDate();
+
+
+    let savedData = null;
+
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+
+        if(raw){
+
+            savedData =
+                JSON.parse(raw);
+
+        }
+
+    }
+
+    catch(error){
+
+        savedData = null;
+
+    }
+
+
+    /*
+       Если данных нет —
+       создаём новый дневной показатель.
+    */
+
+    if(
+        !savedData ||
+        savedData.date !== today ||
+        typeof savedData.value !== "number"
+    ){
+
+        createNewDailyData();
+
+        return;
+
+    }
+
+
+    /*
+       Если дата та же —
+       возвращаем сохранённую сумму.
+
+       Поэтому:
+
+       F5
+       CTRL+R
+       открыть заново
+       переключить язык
+
+       НЕ сбрасывают сумму.
+    */
+
+    currentValue =
+        savedData.value;
+
+}
+
+
+/* =========================================================
+   SAVE CURRENT VALUE
+========================================================= */
+
+function saveCurrentValue(){
+
+    const data = {
+
+        date:
+            getPeruDate(),
+
+        value:
+            currentValue
+
+    };
+
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE COUNTER
+========================================================= */
 
 function updateCounter(){
 
-    const data =
-        currencyData[currentCurrency];
+    /*
+       Перед увеличением проверяем,
+       не наступил ли новый день в Перу.
+    */
 
-    const increase =
-        randomNumber(
-            data.minAdd,
-            data.maxAdd
-        );
-
-    currentValue += increase;
+    const today =
+        getPeruDate();
 
 
-    if(currentValue > data.max){
+    let savedData = null;
 
-        currentValue =
-            randomNumber(
-                data.min,
-                data.max
+
+    try{
+
+        const raw =
+            localStorage.getItem(
+                STORAGE_KEY
             );
+
+
+        if(raw){
+
+            savedData =
+                JSON.parse(raw);
+
+        }
+
+    }
+
+    catch(error){
+
+        savedData = null;
 
     }
 
 
-    activityValue.classList.add("updated");
+    /*
+       Если наступил новый день —
+       начинаем новый цикл.
+    */
 
-    activityValue.textContent =
-        formatCurrency(currentValue);
+    if(
+        !savedData ||
+        savedData.date !== today
+    ){
+
+        createNewDailyData();
+
+        renderCounter();
+
+    }
 
 
-    setTimeout(function(){
+    /*
+       Увеличение суммы.
 
-        activityValue.classList.remove("updated");
+       Здесь оставлена твоя исходная логика:
+       +40 ... +180 PEN.
+    */
 
-    },220);
+    const increase =
+        Math.floor(
+            Math.random() *
+            (180 - 40 + 1)
+        ) + 40;
+
+
+    currentValue +=
+        increase;
+
+
+    /*
+       Верхний предел.
+
+       Если сумма дошла выше 420 000,
+       создаём новый диапазон.
+
+       Но это НЕ сброс дня —
+       просто новый показатель внутри
+       текущего дня.
+    */
+
+    if(currentValue > 420000){
+
+        currentValue =
+            Math.floor(
+                Math.random() *
+                (420000 - 350000 + 1)
+            ) + 350000;
+
+    }
+
+
+    /*
+       Сохраняем новое значение.
+
+       Поэтому после обновления страницы
+       браузер загрузит именно эту сумму.
+    */
+
+    saveCurrentValue();
+
+
+    /*
+       Визуальное обновление.
+    */
+
+    activityValue.classList.add(
+        "updated"
+    );
+
+
+    renderCounter();
 
 
     setTimeout(
+        function(){
+
+            activityValue.classList.remove(
+                "updated"
+            );
+
+        },
+        220
+    );
+
+
+    /*
+       Следующее увеличение.
+    */
+
+    setTimeout(
         updateCounter,
-        randomNumber(2500,5000)
+        Math.floor(
+            Math.random() *
+            (5000 - 2500 + 1)
+        ) + 2500
     );
 
 }
@@ -1167,7 +1491,9 @@ function updateCounter(){
 
 function setLanguage(language){
 
-    currentLanguage = language;
+    currentLanguage =
+        language;
+
 
     const t =
         translations[language];
@@ -1176,67 +1502,109 @@ function setLanguage(language){
     verifiedText.textContent =
         t.verified;
 
+
     headline.innerHTML =
         t.headline;
+
 
     subtitle.textContent =
         t.subtitle;
 
+
     activityLabel.textContent =
         t.activityLabel;
+
 
     activityNote.textContent =
         t.activityNote;
 
+
     paymentTitle.textContent =
         t.paymentTitle;
+
 
     yapeSub.textContent =
         t.peru;
 
+
     plinSub.textContent =
         t.peru;
+
 
     fastText.textContent =
         t.fast;
 
+
     promoTitle.textContent =
         t.promo;
+
 
     copyBtn.textContent =
         t.copy;
 
+
     ctaText.textContent =
         t.cta;
+
 
     footerText.textContent =
         t.footer;
 
 
+    /*
+       Здесь БОЛЬШЕ НЕТ:
+
+       setInitialCurrency("PEN");
+       setInitialCurrency("USD");
+
+       Именно они раньше ломали логику.
+    */
+
+
     if(language === "es"){
 
-        langES.classList.add("active");
-        langEN.classList.remove("active");
+        langES.classList.add(
+            "active"
+        );
 
-        document.documentElement.lang = "es";
+        langEN.classList.remove(
+            "active"
+        );
 
-        setInitialCurrency("PEN");
+        document.documentElement.lang =
+            "es";
 
     }
 
     else{
 
-        langEN.classList.add("active");
-        langES.classList.remove("active");
+        langEN.classList.add(
+            "active"
+        );
 
-        document.documentElement.lang = "en";
+        langES.classList.remove(
+            "active"
+        );
 
-        setInitialCurrency("USD");
+        document.documentElement.lang =
+            "en";
 
     }
 
+
+    /*
+       Просто перерисовываем
+       уже существующую сумму.
+    */
+
+    renderCounter();
+
 }
 
+
+/* =========================================================
+   LANGUAGE BUTTONS
+========================================================= */
 
 langES.addEventListener(
     "click",
@@ -1277,7 +1645,9 @@ copyBtn.addEventListener(
         catch(error){
 
             const textarea =
-                document.createElement("textarea");
+                document.createElement(
+                    "textarea"
+                );
 
             textarea.value =
                 PROMO_CODE;
@@ -1288,7 +1658,9 @@ copyBtn.addEventListener(
 
             textarea.select();
 
-            document.execCommand("copy");
+            document.execCommand(
+                "copy"
+            );
 
             textarea.remove();
 
@@ -1296,14 +1668,18 @@ copyBtn.addEventListener(
 
 
         copyBtn.textContent =
-            translations[currentLanguage].copied;
+            translations[
+                currentLanguage
+            ].copied;
 
 
         setTimeout(
             function(){
 
                 copyBtn.textContent =
-                    translations[currentLanguage].copy;
+                    translations[
+                        currentLanguage
+                    ].copy;
 
             },
             1500
@@ -1335,7 +1711,8 @@ ctaButton.addEventListener(
                 "continue_click",
                 {
 
-                    event_category:"CTA",
+                    event_category:
+                        "CTA",
 
                     event_label:
                         "Verified Platform Landing Page",
@@ -1344,7 +1721,9 @@ ctaButton.addEventListener(
                         currentLanguage,
 
                     currency:
-                        currentCurrency
+                        currentLanguage === "es"
+                            ? "PEN"
+                            : "USD"
 
                 }
             );
@@ -1370,7 +1749,17 @@ ctaButton.addEventListener(
    INITIALIZE
 ========================================================= */
 
+/*
+   1. Загружаем сохранённую сумму.
+   2. Если новый день — создаём новую.
+   3. Показываем ES.
+   4. Запускаем увеличение.
+*/
+
+loadDailyData();
+
 setLanguage("es");
+
 
 setTimeout(
     updateCounter,
