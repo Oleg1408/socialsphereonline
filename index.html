@@ -81,7 +81,7 @@ body{
     position:relative;
     width:100%;
     max-width:390px;
-    padding:20px 16px 16px;
+    padding:18px 16px 16px;
     text-align:center;
     background: linear-gradient(145deg, rgba(22,25,32,.95), rgba(7,9,13,.98));
     border:1px solid rgba(255,196,0,.35);
@@ -145,35 +145,63 @@ body{
     background:rgba(46,204,113,.1);
 }
 
-/* SECURITY BADGE */
-.security-badge{
+/* LIVE ONLINE USERS WIDGET (ONLY ACCENT BADGE) */
+.live-users-badge{
     display:inline-flex;
     align-items:center;
-    gap:5px;
-    color:#2ecc71;
-    font-size:9.5px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:.4px;
+    justify-content:center;
+    gap:7px;
+    color:#e0e6ed;
+    font-size:11px;
+    font-weight:700;
     margin-bottom:10px;
-    background:rgba(46,204,113,.08);
-    padding:4px 10px;
+    background:rgba(255,255,255,.05);
+    padding:6px 14px;
     border-radius:20px;
-    border:1px solid rgba(46,204,113,.2);
+    border:1px solid rgba(255,255,255,.12);
 }
 
-.security-dot{
-    width:6px;
-    height:6px;
+.live-dot{
+    width:8px;
+    height:8px;
     background:#2ecc71;
     border-radius:50%;
-    box-shadow:0 0 8px #2ecc71;
-    animation:pulseDot 1.8s infinite;
+    box-shadow:0 0 10px #2ecc71;
+    animation:pulseDot 1.5s infinite;
 }
 
 @keyframes pulseDot{
     0%,100%{ opacity:1; transform:scale(1); }
-    50%{ opacity:.4; transform:scale(.8); }
+    50%{ opacity:.35; transform:scale(.7); }
+}
+
+.live-count{
+    color:#2ecc71;
+    font-weight:900;
+    letter-spacing:.3px;
+}
+
+/* NEW REDESIGNED SECURITY BADGE (SUBTLE GOLDEN SHIELD STYLE) */
+.security-badge-new{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#9ea8b6;
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:12px;
+    background:rgba(255,196,0,.04);
+    padding:3px 10px;
+    border-radius:6px;
+    border:1px solid rgba(255,196,0,.15);
+}
+
+.security-icon{
+    font-size:10px;
+    opacity:.85;
 }
 
 /* HEADINGS */
@@ -192,7 +220,7 @@ h1{
 
 .subtitle{
     max-width:320px;
-    margin:0 auto 14px;
+    margin:0 auto 12px;
     color:#b1b7c2;
     font-size:12px;
     line-height:1.45;
@@ -386,10 +414,19 @@ h1{
             </button>
         </div>
 
-        <!-- SECURITY BADGE -->
-        <div class="security-badge">
-            <span class="security-dot"></span>
-            <span id="securityText">CONEXIÓN SEGURA SSL (256-BIT)</span>
+        <!-- LIVE ONLINE USERS WIDGET -->
+        <div class="live-users-badge">
+            <span class="live-dot"></span>
+            <span id="liveTextPrefix">Ahora probando su suerte:</span>
+            <span class="live-count" id="onlineCounter">2,643</span>
+        </div>
+
+        <!-- REDESIGN: REFINED SECURITY BADGE (NO DOT) -->
+        <div>
+            <div class="security-badge-new">
+                <span class="security-icon">🛡️️</span>
+                <span id="securityText">SERVIDOR SEGURO | SSL 256-BIT</span>
+            </div>
         </div>
 
         <!-- TITLE -->
@@ -451,7 +488,7 @@ const PROMO_CODE = "GANASOLES";
 let currentLanguage = "es";
 let soundEnabled = false;
 
-// Audio Synth via Web Audio API (без внешних аудиофайлов)
+// Audio Synth via Web Audio API
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
 
@@ -462,8 +499,8 @@ function playClickSound() {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08); // A5
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
         gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
         osc.connect(gain);
@@ -475,7 +512,8 @@ function playClickSound() {
 
 const translations = {
     es: {
-        security: "CONEXIÓN SEGURA SSL (256-BIT)",
+        livePrefix: "Ahora probando su suerte:",
+        security: "SERVIDOR SEGURO | SSL 256-BIT",
         headline: '¿Listo para <span class="highlight">probar tu suerte</span> hoy?',
         subtitle: "Ingresa a la plataforma oficial, accede a la mejor experiencia de entretenimiento y reclama tu bono.",
         paymentTitle: "Métodos de pago e ingreso",
@@ -486,7 +524,8 @@ const translations = {
         footer: "Solo para mayores de 18 años (+18). Juega con responsabilidad."
     },
     en: {
-        security: "256-BIT SSL SECURE CONNECTION",
+        livePrefix: "Currently trying their luck:",
+        security: "SECURE SERVER | 256-BIT SSL",
         headline: 'Ready to <span class="highlight">try your luck</span> today?',
         subtitle: "Access the official platform, enjoy the best entertainment experience and claim your bonus.",
         paymentTitle: "Payment & Entry Methods",
@@ -503,6 +542,8 @@ const langES = document.getElementById("langES");
 const langEN = document.getElementById("langEN");
 const soundBtn = document.getElementById("soundBtn");
 const soundIcon = document.getElementById("soundIcon");
+const liveTextPrefix = document.getElementById("liveTextPrefix");
+const onlineCounter = document.getElementById("onlineCounter");
 const securityText = document.getElementById("securityText");
 const headline = document.getElementById("headline");
 const subtitle = document.getElementById("subtitle");
@@ -518,6 +559,7 @@ function setLanguage(language){
     currentLanguage = language;
     const t = translations[language];
 
+    liveTextPrefix.textContent = t.livePrefix;
     securityText.textContent = t.security;
     headline.innerHTML = t.headline;
     subtitle.textContent = t.subtitle;
@@ -548,11 +590,43 @@ function detectUserLanguage() {
     }
 }
 
-// Event Listeners for Manual Switch
+// 2. DYNAMIC LIVE COUNTER ALGORITHM
+let currentOnline = 2643;
+let isIncreasingPhase = true;
+let phaseTicks = 0;
+
+function updateCounterDisplay() {
+    onlineCounter.textContent = currentOnline.toLocaleString('en-US');
+}
+
+setInterval(() => {
+    phaseTicks++;
+
+    if (isIncreasingPhase) {
+        const delta = Math.floor(Math.random() * (16 - 4 + 1)) + 4;
+        currentOnline += delta;
+        
+        if (phaseTicks >= 12) {
+            isIncreasingPhase = false;
+            phaseTicks = 0;
+        }
+    } else {
+        const delta = Math.floor(Math.random() * (16 - 3 + 1)) + 3;
+        currentOnline -= delta;
+        
+        if (phaseTicks >= 5) {
+            isIncreasingPhase = true;
+            phaseTicks = 0;
+        }
+    }
+
+    updateCounterDisplay();
+}, 5000);
+
+// Event Listeners
 langES.addEventListener("click", () => { playClickSound(); setLanguage("es"); });
 langEN.addEventListener("click", () => { playClickSound(); setLanguage("en"); });
 
-// Sound Toggle
 soundBtn.addEventListener("click", () => {
     soundEnabled = !soundEnabled;
     if(soundEnabled) {
@@ -565,7 +639,6 @@ soundBtn.addEventListener("click", () => {
     }
 });
 
-// Copy Code Handler
 copyBtn.addEventListener("click", async function(){
     playClickSound();
     try {
@@ -588,7 +661,6 @@ copyBtn.addEventListener("click", async function(){
     }, 1600);
 });
 
-// CTA Click Handler
 ctaButton.href = OFFER_LINK;
 ctaButton.addEventListener("click", function(e){
     e.preventDefault();
@@ -605,8 +677,9 @@ ctaButton.addEventListener("click", function(e){
     setTimeout(() => { window.location.href = OFFER_LINK; }, 200);
 });
 
-// Run Auto-Detection on Page Load
+// Initializations
 detectUserLanguage();
+updateCounterDisplay();
 </script>
 
 </body>
