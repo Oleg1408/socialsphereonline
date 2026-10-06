@@ -6,6 +6,7 @@
 
 <title>Acceso Oficial 🇵🇪</title>
 
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -20,6 +21,7 @@ gtag('config', 'G-H2DNL0SX0P');
     margin:0;
     padding:0;
     -webkit-tap-highlight-color:transparent;
+    user-select:none;
 }
 
 html, body{
@@ -53,8 +55,8 @@ body{
     inset:0;
     z-index:-4;
     background:
-        radial-gradient(circle at 50% 20%, rgba(255,190,0,.16), transparent 38%),
-        linear-gradient(180deg, rgba(5,7,11,.48), rgba(5,7,11,.96)),
+        radial-gradient(circle at 50% 20%, rgba(255,190,0,.18), transparent 40%),
+        linear-gradient(180deg, rgba(5,7,11,.45), rgba(5,7,11,.96)),
         url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop") center/cover no-repeat;
 }
 
@@ -62,10 +64,10 @@ body{
     position:fixed;
     inset:0;
     z-index:-2;
-    background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.58) 45%, rgba(0,0,0,.88) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.60) 45%, rgba(0,0,0,.92) 100%);
 }
 
-/* PAGE & CARD */
+/* PAGE & CARD CONTAINER */
 .page{
     min-height:100vh;
     width:100%;
@@ -76,91 +78,123 @@ body{
 }
 
 .card{
+    position:relative;
     width:100%;
     max-width:390px;
     padding:20px 16px 16px;
     text-align:center;
-    background: linear-gradient(145deg, rgba(22,25,32,.94), rgba(7,9,13,.96));
-    border:1px solid rgba(255,196,0,.28);
-    border-radius:22px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.08);
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    background: linear-gradient(145deg, rgba(22,25,32,.95), rgba(7,9,13,.98));
+    border:1px solid rgba(255,196,0,.35);
+    border-radius:24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.1);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 }
 
-/* LANGUAGE SWITCHER INSIDE CARD */
+/* TOP TOOLBAR INSIDE CARD */
+.card-top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
 .language-switcher-card{
     display:flex;
-    justify-content:center;
-    gap:6px;
-    margin-bottom:12px;
+    gap:5px;
 }
 
 .lang-btn{
     border:1px solid rgba(255,255,255,.12);
     background:rgba(255,255,255,.05);
     color:#858c99;
-    padding:6px 12px;
+    padding:5px 10px;
     border-radius:8px;
     font-size:11px;
     font-weight:800;
     cursor:pointer;
-    transition: .15s;
+    transition:.2s ease;
 }
 
 .lang-btn.active{
     background:#f5bd20;
     color:#080808;
     border-color:#f5bd20;
+    box-shadow: 0 0 10px rgba(245,189,32,.3);
 }
 
-/* VERIFIED BADGE */
-.verified-badge{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    padding:6px 12px;
-    margin-bottom:12px;
-    border-radius:50px;
-    background:rgba(255,193,7,.08);
-    border:1px solid rgba(255,193,7,.4);
-    color:#ffd34d;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:.3px;
-    text-transform:uppercase;
-}
-
-.verified-check{
-    width:14px;
-    height:14px;
+/* AUDIO TOGGLE BUTTON */
+.sound-btn{
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    color:#858c99;
+    padding:5px 9px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
     display:flex;
     align-items:center;
-    justify-content:center;
+    gap:4px;
+    transition:.2s;
+}
+
+.sound-btn.active{
+    color:#2ecc71;
+    border-color:rgba(46,204,113,.4);
+    background:rgba(46,204,113,.1);
+}
+
+/* SECURITY BADGE */
+.security-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    color:#2ecc71;
+    font-size:9.5px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin-bottom:10px;
+    background:rgba(46,204,113,.08);
+    padding:4px 10px;
+    border-radius:20px;
+    border:1px solid rgba(46,204,113,.2);
+}
+
+.security-dot{
+    width:6px;
+    height:6px;
+    background:#2ecc71;
     border-radius:50%;
-    background:#ffc400;
-    color:#111;
-    font-size:9px;
-    font-weight:950;
+    box-shadow:0 0 8px #2ecc71;
+    animation:pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.4; transform:scale(.8); }
 }
 
 /* HEADINGS */
 h1{
-    font-size:23px;
-    line-height:1.2;
+    font-size:22px;
+    line-height:1.25;
     font-weight:900;
-    letter-spacing:-.5px;
+    letter-spacing:-.4px;
     margin-bottom:8px;
 }
 
-.highlight{ color:#ffc52b; }
+.highlight{ 
+    color:#ffc52b; 
+    text-shadow: 0 0 12px rgba(255,197,43,.3);
+}
 
 .subtitle{
     max-width:320px;
     margin:0 auto 14px;
     color:#b1b7c2;
-    font-size:12.5px;
+    font-size:12px;
     line-height:1.45;
 }
 
@@ -190,6 +224,12 @@ h1{
     border-radius:10px;
     background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.08);
+    transition:.2s;
+}
+
+.payment-card:hover{
+    border-color:rgba(255,196,0,.3);
+    background:rgba(255,255,255,.05);
 }
 
 .payment-logo{
@@ -205,7 +245,6 @@ h1{
 }
 
 .yape-logo{ background:#742cff; color:#fff; }
-.plin-logo{ background:#11b9b1; color:#fff; }
 .card-logo{ background:#2557d6; color:#fff; }
 .crypto-logo{ background:#f39c12; color:#fff; }
 
@@ -215,13 +254,19 @@ h1{
     color:#d7dbe2;
 }
 
-/* PROMO */
+/* PROMO BOX */
 .promo-box{
-    margin-bottom:12px;
+    margin-bottom:14px;
     padding:10px;
     border-radius:12px;
-    background: linear-gradient(135deg, rgba(255,193,7,.08), rgba(255,193,7,.02));
+    background: linear-gradient(135deg, rgba(255,193,7,.09), rgba(255,193,7,.02));
     border:1px dashed rgba(255,193,7,.4);
+    transition:.3s ease;
+}
+
+.promo-box.copied-glow{
+    border-color:#2ecc71;
+    background:rgba(46,204,113,.12);
 }
 
 .promo-title{
@@ -255,11 +300,17 @@ h1{
     font-size:9.5px;
     font-weight:900;
     cursor:pointer;
+    transition:.15s;
 }
 
-.copy-btn:active{ transform:scale(.95); }
+.copy-btn:active{ transform:scale(.92); }
 
-/* CTA */
+/* CTA BUTTON WITH PULSE GLOW */
+.cta-btn-wrapper{
+    position:relative;
+    width:100%;
+}
+
 .cta-btn{
     position:relative;
     overflow:hidden;
@@ -274,20 +325,26 @@ h1{
     text-decoration:none;
     font-size:15px;
     font-weight:950;
-    box-shadow: 0 10px 25px rgba(245,174,0,.25), inset 0 1px 0 rgba(255,255,255,.5);
+    box-shadow: 0 10px 25px rgba(245,174,0,.3), inset 0 1px 0 rgba(255,255,255,.5);
+    animation: ctaPulse 2.2s infinite;
     transition:.18s;
 }
 
-.cta-btn:active{ transform:scale(.985); }
+@keyframes ctaPulse{
+    0%, 100% { box-shadow: 0 10px 25px rgba(245,174,0,.3); transform: scale(1); }
+    50% { box-shadow: 0 12px 30px rgba(245,174,0,.6); transform: scale(1.015); }
+}
+
+.cta-btn:active{ transform:scale(.98); }
 
 .cta-btn::after{
     content:"";
     position:absolute;
     top:0; left:-120%;
     width:55%; height:100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
     transform:skewX(-20deg);
-    animation:buttonShine 3.5s infinite;
+    animation:buttonShine 3.2s infinite;
 }
 
 @keyframes buttonShine{
@@ -297,7 +354,7 @@ h1{
 
 /* FOOTER */
 .footer{
-    margin-top:10px;
+    margin-top:12px;
     color:#525964;
     font-size:8.5px;
     line-height:1.3;
@@ -318,16 +375,21 @@ h1{
 <div class="page">
     <div class="card">
 
-        <!-- LANGUAGE SWITCHER INSIDE -->
-        <div class="language-switcher-card">
-            <button class="lang-btn active" id="langES" type="button">🇵🇪 ES (Perú)</button>
-            <button class="lang-btn" id="langEN" type="button">🌐 EN (Global)</button>
+        <!-- CARD TOP BAR (LANG & SOUND) -->
+        <div class="card-top-bar">
+            <div class="language-switcher-card">
+                <button class="lang-btn" id="langES" type="button">🇵🇪 ES</button>
+                <button class="lang-btn" id="langEN" type="button">🌐 EN</button>
+            </div>
+            <button class="sound-btn" id="soundBtn" type="button">
+                <span id="soundIcon">🔇</span> <span id="soundText">Sound</span>
+            </button>
         </div>
 
-        <!-- VERIFIED BADGE -->
-        <div class="verified-badge">
-            <span class="verified-check">✓</span>
-            <span id="verifiedText">PLATAFORMA VERIFICADA</span>
+        <!-- SECURITY BADGE -->
+        <div class="security-badge">
+            <span class="security-dot"></span>
+            <span id="securityText">CONEXIÓN SEGURA SSL (256-BIT)</span>
         </div>
 
         <!-- TITLE -->
@@ -346,7 +408,7 @@ h1{
         <div class="payment-methods">
             <div class="payment-card">
                 <div class="payment-logo card-logo">💳</div>
-                <div class="payment-name">Visa/MC</div>
+                <div class="payment-name">Visa / MC</div>
             </div>
             <div class="payment-card">
                 <div class="payment-logo crypto-logo">₿</div>
@@ -359,7 +421,7 @@ h1{
         </div>
 
         <!-- PROMO -->
-        <div class="promo-box">
+        <div class="promo-box" id="promoBox">
             <div class="promo-title" id="promoTitle">🎁 Código promocional de acceso</div>
             <div class="promo-row">
                 <div class="promo-code">GANASOLES</div>
@@ -367,10 +429,12 @@ h1{
             </div>
         </div>
 
-        <!-- CTA -->
-        <a id="ctaButton" class="cta-btn" href="#">
-            <span id="ctaText">ENTRAR Y EMPEZAR AHORA ➔</span>
-        </a>
+        <!-- CTA BUTTON -->
+        <div class="cta-btn-wrapper">
+            <a id="ctaButton" class="cta-btn" href="#">
+                <span id="ctaText">ENTRAR Y EMPEZAR AHORA ➔</span>
+            </a>
+        </div>
 
         <!-- FOOTER -->
         <div class="footer" id="footerText">
@@ -385,10 +449,33 @@ const OFFER_LINK = "https://w-one477.com/v3/aviator-fire?p=349u";
 const PROMO_CODE = "GANASOLES";
 
 let currentLanguage = "es";
+let soundEnabled = false;
+
+// Audio Synth via Web Audio API (без внешних аудиофайлов)
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+
+function playClickSound() {
+    if (!soundEnabled) return;
+    try {
+        if (!audioCtx) audioCtx = new AudioContext();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08); // A5
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+    } catch(e) {}
+}
 
 const translations = {
     es: {
-        verified: "PLATAFORMA VERIFICADA",
+        security: "CONEXIÓN SEGURA SSL (256-BIT)",
         headline: '¿Listo para <span class="highlight">probar tu suerte</span> hoy?',
         subtitle: "Ingresa a la plataforma oficial, accede a la mejor experiencia de entretenimiento y reclama tu bono.",
         paymentTitle: "Métodos de pago e ingreso",
@@ -399,7 +486,7 @@ const translations = {
         footer: "Solo para mayores de 18 años (+18). Juega con responsabilidad."
     },
     en: {
-        verified: "VERIFIED PLATFORM",
+        security: "256-BIT SSL SECURE CONNECTION",
         headline: 'Ready to <span class="highlight">try your luck</span> today?',
         subtitle: "Access the official platform, enjoy the best entertainment experience and claim your bonus.",
         paymentTitle: "Payment & Entry Methods",
@@ -411,13 +498,17 @@ const translations = {
     }
 };
 
+// UI Elements
 const langES = document.getElementById("langES");
 const langEN = document.getElementById("langEN");
-const verifiedText = document.getElementById("verifiedText");
+const soundBtn = document.getElementById("soundBtn");
+const soundIcon = document.getElementById("soundIcon");
+const securityText = document.getElementById("securityText");
 const headline = document.getElementById("headline");
 const subtitle = document.getElementById("subtitle");
 const paymentTitle = document.getElementById("paymentTitle");
 const promoTitle = document.getElementById("promoTitle");
+const promoBox = document.getElementById("promoBox");
 const copyBtn = document.getElementById("copyBtn");
 const ctaText = document.getElementById("ctaText");
 const footerText = document.getElementById("footerText");
@@ -427,7 +518,7 @@ function setLanguage(language){
     currentLanguage = language;
     const t = translations[language];
 
-    verifiedText.textContent = t.verified;
+    securityText.textContent = t.security;
     headline.innerHTML = t.headline;
     subtitle.textContent = t.subtitle;
     paymentTitle.textContent = t.paymentTitle;
@@ -447,10 +538,36 @@ function setLanguage(language){
     }
 }
 
-langES.addEventListener("click", () => setLanguage("es"));
-langEN.addEventListener("click", () => setLanguage("en"));
+// 1. AUTOMATIC BROWSER LANGUAGE DETECTION
+function detectUserLanguage() {
+    const userLang = (navigator.language || navigator.userLanguage || "es").toLowerCase();
+    if (userLang.startsWith("es")) {
+        setLanguage("es");
+    } else {
+        setLanguage("en");
+    }
+}
 
+// Event Listeners for Manual Switch
+langES.addEventListener("click", () => { playClickSound(); setLanguage("es"); });
+langEN.addEventListener("click", () => { playClickSound(); setLanguage("en"); });
+
+// Sound Toggle
+soundBtn.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    if(soundEnabled) {
+        soundBtn.classList.add("active");
+        soundIcon.textContent = "🔊";
+        playClickSound();
+    } else {
+        soundBtn.classList.remove("active");
+        soundIcon.textContent = "🔇";
+    }
+});
+
+// Copy Code Handler
 copyBtn.addEventListener("click", async function(){
+    playClickSound();
     try {
         await navigator.clipboard.writeText(PROMO_CODE);
     } catch(error) {
@@ -461,13 +578,22 @@ copyBtn.addEventListener("click", async function(){
         document.execCommand("copy");
         textarea.remove();
     }
+    
+    promoBox.classList.add("copied-glow");
     copyBtn.textContent = translations[currentLanguage].copied;
-    setTimeout(() => { copyBtn.textContent = translations[currentLanguage].copy; }, 1500);
+    
+    setTimeout(() => { 
+        copyBtn.textContent = translations[currentLanguage].copy;
+        promoBox.classList.remove("copied-glow");
+    }, 1600);
 });
 
+// CTA Click Handler
 ctaButton.href = OFFER_LINK;
 ctaButton.addEventListener("click", function(e){
     e.preventDefault();
+    playClickSound();
+    
     if(typeof gtag === "function"){
         gtag("event", "continue_click", {
             event_category: "CTA",
@@ -475,10 +601,12 @@ ctaButton.addEventListener("click", function(e){
             language: currentLanguage
         });
     }
-    setTimeout(() => { window.location.href = OFFER_LINK; }, 250);
+    
+    setTimeout(() => { window.location.href = OFFER_LINK; }, 200);
 });
 
-setLanguage("es");
+// Run Auto-Detection on Page Load
+detectUserLanguage();
 </script>
 
 </body>
