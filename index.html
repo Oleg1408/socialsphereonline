@@ -4,23 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Acceso Oficial Perú 🇵🇪</title>
+<title>Acceso Oficial 🇵🇪</title>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H2DNL0SX0P"></script>
-
 <script>
 window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
+function gtag(){ dataLayer.push(arguments); }
 gtag('js', new Date());
 gtag('config', 'G-H2DNL0SX0P');
 </script>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -28,8 +22,7 @@ gtag('config', 'G-H2DNL0SX0P');
     -webkit-tap-highlight-color:transparent;
 }
 
-html,
-body{
+html, body{
     width:100%;
     min-height:100%;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
@@ -42,10 +35,7 @@ body{
     overflow-x:hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
+/* BACKGROUND */
 .video-bg{
     position:fixed;
     inset:0;
@@ -62,578 +52,256 @@ body{
     position:fixed;
     inset:0;
     z-index:-4;
-
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(255,190,0,.16),
-            transparent 38%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(5,7,11,.48),
-            rgba(5,7,11,.96)
-        ),
-        url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop")
-        center/cover no-repeat;
+        radial-gradient(circle at 50% 20%, rgba(255,190,0,.16), transparent 38%),
+        linear-gradient(180deg, rgba(5,7,11,.48), rgba(5,7,11,.96)),
+        url("https://images.unsplash.com/photo-1518893883800-45cd0954574b?q=85&w=1400&auto=format&fit=crop") center/cover no-repeat;
 }
 
 .overlay{
     position:fixed;
     inset:0;
     z-index:-2;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.35) 0%,
-            rgba(0,0,0,.58) 45%,
-            rgba(0,0,0,.88) 100%
-        );
+    background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.58) 45%, rgba(0,0,0,.88) 100%);
 }
 
-/* =========================
-   LANGUAGE
-========================= */
-
-.language-switcher{
-    position:fixed;
-    top:16px;
-    right:15px;
-    z-index:20;
-
+/* PAGE & CARD */
+.page{
+    min-height:100vh;
+    width:100%;
     display:flex;
-    gap:3px;
+    justify-content:center;
+    align-items:center;
+    padding:15px 12px;
+}
 
-    padding:4px;
+.card{
+    width:100%;
+    max-width:390px;
+    padding:20px 16px 16px;
+    text-align:center;
+    background: linear-gradient(145deg, rgba(22,25,32,.94), rgba(7,9,13,.96));
+    border:1px solid rgba(255,196,0,.28);
+    border-radius:22px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+}
 
-    background:rgba(12,14,19,.88);
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:12px;
-
-    backdrop-filter:blur(14px);
+/* LANGUAGE SWITCHER INSIDE CARD */
+.language-switcher-card{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin-bottom:12px;
 }
 
 .lang-btn{
-    border:0;
-    background:transparent;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
     color:#858c99;
-
-    padding:7px 10px;
-
+    padding:6px 12px;
     border-radius:8px;
-
-    font-size:10px;
-    font-weight:900;
-
+    font-size:11px;
+    font-weight:800;
     cursor:pointer;
+    transition: .15s;
 }
 
 .lang-btn.active{
     background:#f5bd20;
     color:#080808;
+    border-color:#f5bd20;
 }
 
-/* =========================
-   PAGE
-========================= */
-
-.page{
-    min-height:100vh;
-    width:100%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:60px 14px 22px;
-}
-
-/* =========================
-   CARD
-========================= */
-
-.card{
-    width:100%;
-    max-width:405px;
-
-    padding:25px 19px 20px;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(22,25,32,.94),
-            rgba(7,9,13,.96)
-        );
-
-    border:1px solid rgba(255,196,0,.28);
-    border-radius:25px;
-
-    box-shadow:
-        0 28px 75px rgba(0,0,0,.78),
-        inset 0 1px 0 rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-}
-
-/* =========================
-   VERIFIED BADGE
-========================= */
-
+/* VERIFIED BADGE */
 .verified-badge{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:7px;
-
-    padding:7px 13px;
-    margin-bottom:17px;
-
+    gap:6px;
+    padding:6px 12px;
+    margin-bottom:12px;
     border-radius:50px;
-
     background:rgba(255,193,7,.08);
     border:1px solid rgba(255,193,7,.4);
-
     color:#ffd34d;
-
     font-size:10px;
     font-weight:900;
-    letter-spacing:.35px;
+    letter-spacing:.3px;
     text-transform:uppercase;
 }
 
 .verified-check{
-    width:16px;
-    height:16px;
-
+    width:14px;
+    height:14px;
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
     background:#ffc400;
     color:#111;
-
-    font-size:10px;
+    font-size:9px;
     font-weight:950;
 }
 
-/* =========================
-   TITLE
-========================= */
-
+/* HEADINGS */
 h1{
-    font-size:27px;
-    line-height:1.18;
+    font-size:23px;
+    line-height:1.2;
     font-weight:900;
-    letter-spacing:-.7px;
-
-    margin-bottom:10px;
+    letter-spacing:-.5px;
+    margin-bottom:8px;
 }
 
-.highlight{
-    color:#ffc52b;
-}
+.highlight{ color:#ffc52b; }
 
 .subtitle{
-    max-width:340px;
-    margin:0 auto 19px;
-
+    max-width:320px;
+    margin:0 auto 14px;
     color:#b1b7c2;
-
-    font-size:13.5px;
-    line-height:1.5;
+    font-size:12.5px;
+    line-height:1.45;
 }
 
-/* =========================
-   WINNINGS COUNTER
-========================= */
-
-.activity-box{
-    position:relative;
-    overflow:hidden;
-
-    margin-bottom:14px;
-    padding:14px 12px;
-
-    border-radius:17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,193,7,.09),
-            rgba(8,10,14,.48)
-        );
-
-    border:1px solid rgba(255,193,7,.2);
-}
-
-.activity-label{
-    margin-bottom:5px;
-
-    color:#8d95a3;
-
-    font-size:10px;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:.55px;
-}
-
-.activity-value{
-    color:#3bed7b;
-
-    font-size:29px;
-    line-height:1.1;
-    font-weight:950;
-    letter-spacing:-.5px;
-
-    text-shadow:0 0 18px rgba(59,237,123,.18);
-
-    transition:
-        transform .18s ease,
-        opacity .18s ease;
-}
-
-.activity-value.updated{
-    transform:scale(1.045);
-    opacity:.72;
-}
-
-.activity-note{
-    margin-top:5px;
-
-    color:#6f7785;
-
-    font-size:9px;
-}
-
-.activity-note-dot{
-    display:inline-block;
-
-    width:6px;
-    height:6px;
-
-    margin-right:4px;
-
-    border-radius:50%;
-
-    background:#3bed7b;
-    box-shadow:0 0 8px rgba(59,237,123,.8);
-}
-
-/* =========================
-   PAYMENT METHODS
-========================= */
-
+/* PAYMENT METHODS GRID */
 .payment-title{
-    margin:2px 0 9px;
-
-    color:#9299a5;
-
-    font-size:10px;
+    margin:0 0 8px;
+    color:#8a919e;
+    font-size:9.5px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:.55px;
+    letter-spacing:.5px;
 }
 
 .payment-methods{
-    display:flex;
-    gap:9px;
-
-    margin-bottom:14px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:6px;
+    margin-bottom:12px;
 }
 
 .payment-card{
-    flex:1;
-
-    min-height:58px;
-
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:8px;
-
-    padding:8px;
-
-    border-radius:13px;
-
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.1);
-
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+    padding:7px 4px;
+    border-radius:10px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
 }
 
 .payment-logo{
-    width:34px;
-    height:34px;
-
+    width:26px;
+    height:26px;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    border-radius:9px;
-
-    font-size:12px;
+    border-radius:6px;
+    font-size:10px;
     font-weight:950;
-    letter-spacing:-.5px;
+    margin-bottom:4px;
 }
 
-.yape-logo{
-    background:#742cff;
-    color:#fff;
-}
-
-.plin-logo{
-    background:#11b9b1;
-    color:#fff;
-}
+.yape-logo{ background:#742cff; color:#fff; }
+.plin-logo{ background:#11b9b1; color:#fff; }
+.card-logo{ background:#2557d6; color:#fff; }
+.crypto-logo{ background:#f39c12; color:#fff; }
 
 .payment-name{
-    font-size:11px;
-    font-weight:900;
+    font-size:10px;
+    font-weight:800;
     color:#d7dbe2;
 }
 
-.payment-sub{
-    margin-top:2px;
-
-    font-size:8px;
-    color:#777f8c;
-}
-
-/* =========================
-   FAST WITHDRAWAL
-========================= */
-
-.fast-withdrawal{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-
-    margin-bottom:14px;
-
-    color:#a4abb6;
-
-    font-size:10px;
-}
-
-.fast-icon{
-    color:#ffc400;
-    font-size:13px;
-}
-
-/* =========================
-   PROMO
-========================= */
-
+/* PROMO */
 .promo-box{
-    margin-bottom:13px;
-    padding:13px;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,193,7,.08),
-            rgba(255,193,7,.025)
-        );
-
-    border:1px dashed rgba(255,193,7,.42);
+    margin-bottom:12px;
+    padding:10px;
+    border-radius:12px;
+    background: linear-gradient(135deg, rgba(255,193,7,.08), rgba(255,193,7,.02));
+    border:1px dashed rgba(255,193,7,.4);
 }
 
 .promo-title{
-    margin-bottom:8px;
-
-    color:#969daa;
-
-    font-size:10px;
+    margin-bottom:6px;
+    color:#8d94a1;
+    font-size:9.5px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:.45px;
 }
 
 .promo-row{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:9px;
+    gap:8px;
 }
 
 .promo-code{
     color:#ffd13a;
-
-    font-size:19px;
+    font-size:17px;
     font-weight:950;
-    letter-spacing:2px;
+    letter-spacing:1.5px;
 }
 
 .copy-btn{
     border:1px solid rgba(255,207,54,.5);
-
-    background:rgba(255,193,7,.12);
+    background:rgba(255,193,7,.15);
     color:#ffd13a;
-
-    border-radius:9px;
-
-    padding:7px 10px;
-
-    font-size:10px;
+    border-radius:7px;
+    padding:5px 9px;
+    font-size:9.5px;
     font-weight:900;
-
     cursor:pointer;
 }
 
-.copy-btn:active{
-    transform:scale(.95);
-}
+.copy-btn:active{ transform:scale(.95); }
 
-/* =========================
-   CTA
-========================= */
-
+/* CTA */
 .cta-btn{
     position:relative;
     overflow:hidden;
-
     width:100%;
-    min-height:57px;
-
+    min-height:52px;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #ffd633 0%,
-            #f1aa00 100%
-        );
-
+    border-radius:13px;
+    background: linear-gradient(180deg, #ffd633 0%, #f1aa00 100%);
     color:#080808;
-
     text-decoration:none;
-
-    font-size:15.5px;
+    font-size:15px;
     font-weight:950;
-    letter-spacing:.2px;
-
-    box-shadow:
-        0 11px 30px rgba(245,174,0,.28),
-        inset 0 1px 0 rgba(255,255,255,.5);
-
+    box-shadow: 0 10px 25px rgba(245,174,0,.25), inset 0 1px 0 rgba(255,255,255,.5);
     transition:.18s;
 }
 
-.cta-btn:active{
-    transform:scale(.985);
-}
+.cta-btn:active{ transform:scale(.985); }
 
 .cta-btn::after{
     content:"";
-
     position:absolute;
-    top:0;
-    left:-120%;
-
-    width:55%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.32),
-            transparent
-        );
-
+    top:0; left:-120%;
+    width:55%; height:100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
     transform:skewX(-20deg);
-
     animation:buttonShine 3.5s infinite;
 }
 
 @keyframes buttonShine{
-
-    0%,55%{
-        left:-120%;
-    }
-
-    100%{
-        left:150%;
-    }
-
+    0%,55%{ left:-120%; }
+    100%{ left:150%; }
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 .footer{
-    margin-top:14px;
-
-    color:#5d6571;
-
-    font-size:9px;
-    line-height:1.4;
+    margin-top:10px;
+    color:#525964;
+    font-size:8.5px;
+    line-height:1.3;
 }
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:380px){
-
-    .page{
-        padding:58px 10px 16px;
-    }
-
-    .card{
-        padding:22px 15px 17px;
-        border-radius:22px;
-    }
-
-    h1{
-        font-size:24px;
-    }
-
-    .subtitle{
-        font-size:13px;
-    }
-
-    .activity-value{
-        font-size:25px;
-    }
-
-    .payment-methods{
-        gap:7px;
-    }
-
-    .payment-card{
-        min-height:54px;
-    }
-
-    .payment-logo{
-        width:31px;
-        height:31px;
-    }
-
-    .payment-name{
-        font-size:10px;
-    }
-
-    .promo-code{
-        font-size:17px;
-    }
-
-}
-
 </style>
 </head>
 
@@ -641,1131 +309,176 @@ h1{
 
 <div class="background-fallback"></div>
 
-<video
-    class="video-bg"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline>
-
+<video class="video-bg" autoplay muted loop playsinline webkit-playsinline>
     <source src="video.mp4" type="video/mp4">
-
 </video>
 
 <div class="overlay"></div>
 
-
-<!-- LANGUAGE -->
-
-<div class="language-switcher">
-
-    <button
-        class="lang-btn active"
-        id="langES"
-        type="button">
-
-        🇵🇪 ES
-
-    </button>
-
-    <button
-        class="lang-btn"
-        id="langEN"
-        type="button">
-
-        🇺🇸 EN
-
-    </button>
-
-</div>
-
-
 <div class="page">
+    <div class="card">
 
-<div class="card">
-
-
-    <!-- VERIFIED -->
-
-    <div class="verified-badge">
-
-        <span class="verified-check">✓</span>
-
-        <span id="verifiedText">
-            PLATAFORMA VERIFICADA PARA JUGADORES EN PERÚ
-        </span>
-
-    </div>
-
-
-    <!-- TITLE -->
-
-    <h1 id="headline">
-        ¿Listo para
-        <span class="highlight">
-            probar tu suerte
-        </span>
-        hoy?
-    </h1>
-
-
-    <!-- SUBTITLE -->
-
-    <p
-        class="subtitle"
-        id="subtitle">
-
-        Ingresa a la plataforma oficial, juega en
-        <strong>Aviator</strong>
-        y disfruta de una experiencia de juego desde Perú.
-
-    </p>
-
-
-    <!-- WINNINGS -->
-
-    <div class="activity-box">
-
-        <div
-            class="activity-label"
-            id="activityLabel">
-
-            Ganancias de hoy en Perú
-
+        <!-- LANGUAGE SWITCHER INSIDE -->
+        <div class="language-switcher-card">
+            <button class="lang-btn active" id="langES" type="button">🇵🇪 ES (Perú)</button>
+            <button class="lang-btn" id="langEN" type="button">🌐 EN (Global)</button>
         </div>
 
-        <div
-            class="activity-value"
-            id="activityValue">
-
-            S/ 255,479
-
+        <!-- VERIFIED BADGE -->
+        <div class="verified-badge">
+            <span class="verified-check">✓</span>
+            <span id="verifiedText">PLATAFORMA VERIFICADA</span>
         </div>
 
-        <div class="activity-note">
+        <!-- TITLE -->
+        <h1 id="headline">
+            ¿Listo para <span class="highlight">probar tu suerte</span> hoy?
+        </h1>
 
-            <span class="activity-note-dot"></span>
+        <!-- SUBTITLE -->
+        <p class="subtitle" id="subtitle">
+            Ingresa a la plataforma oficial, accede a la mejor experiencia de entretenimiento y reclama tu bono.
+        </p>
 
-            <span id="activityNote">
-                Indicador de actividad en vivo
-            </span>
+        <!-- PAYMENTS -->
+        <div class="payment-title" id="paymentTitle">Métodos de pago e ingreso</div>
 
-        </div>
-
-    </div>
-
-
-    <!-- PAYMENTS -->
-
-    <div
-        class="payment-title"
-        id="paymentTitle">
-
-        Métodos de pago disponibles
-
-    </div>
-
-
-    <div class="payment-methods">
-
-        <div class="payment-card">
-
-            <div class="payment-logo yape-logo">
-                Y
+        <div class="payment-methods">
+            <div class="payment-card">
+                <div class="payment-logo card-logo">💳</div>
+                <div class="payment-name">Visa/MC</div>
             </div>
-
-            <div>
-
-                <div class="payment-name">
-                    Yape
-                </div>
-
-                <div
-                    class="payment-sub"
-                    id="yapeSub">
-
-                    Perú
-
-                </div>
-
+            <div class="payment-card">
+                <div class="payment-logo crypto-logo">₿</div>
+                <div class="payment-name">Crypto</div>
             </div>
-
+            <div class="payment-card">
+                <div class="payment-logo yape-logo">Y</div>
+                <div class="payment-name">Yape / Plin</div>
+            </div>
         </div>
 
-
-        <div class="payment-card">
-
-            <div class="payment-logo plin-logo">
-                P
+        <!-- PROMO -->
+        <div class="promo-box">
+            <div class="promo-title" id="promoTitle">🎁 Código promocional de acceso</div>
+            <div class="promo-row">
+                <div class="promo-code">GANASOLES</div>
+                <button class="copy-btn" id="copyBtn" type="button">📋 Copiar</button>
             </div>
+        </div>
 
-            <div>
+        <!-- CTA -->
+        <a id="ctaButton" class="cta-btn" href="#">
+            <span id="ctaText">ENTRAR Y EMPEZAR AHORA ➔</span>
+        </a>
 
-                <div class="payment-name">
-                    Plin
-                </div>
-
-                <div
-                    class="payment-sub"
-                    id="plinSub">
-
-                    Perú
-
-                </div>
-
-            </div>
-
+        <!-- FOOTER -->
+        <div class="footer" id="footerText">
+            Solo para mayores de 18 años (+18). Juega con responsabilidad.
         </div>
 
     </div>
-
-
-    <!-- FAST WITHDRAWAL -->
-
-    <div class="fast-withdrawal">
-
-        <span class="fast-icon">
-            ⚡
-        </span>
-
-        <span id="fastText">
-            Retiros rápidos disponibles
-        </span>
-
-    </div>
-
-
-    <!-- PROMO -->
-
-    <div class="promo-box">
-
-        <div
-            class="promo-title"
-            id="promoTitle">
-
-            🎁 Usa el código promocional al registrarte
-
-        </div>
-
-        <div class="promo-row">
-
-            <div class="promo-code">
-                GANASOLES
-            </div>
-
-            <button
-                class="copy-btn"
-                id="copyBtn"
-                type="button">
-
-                📋 Copiar
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- CTA -->
-
-    <a
-        id="ctaButton"
-        class="cta-btn"
-        href="#">
-
-        <span id="ctaText">
-            ENTRAR Y JUGAR AHORA ➔
-        </span>
-
-    </a>
-
-
-    <!-- FOOTER -->
-
-    <div
-        class="footer"
-        id="footerText">
-
-        Solo para mayores de 18 años (+18).
-        Juega con responsabilidad.
-
-    </div>
-
-
 </div>
-
-</div>
-
 
 <script>
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-const OFFER_LINK =
-    "https://w-one477.com/v3/aviator-fire?p=349u";
-
-const PROMO_CODE =
-    "GANASOLES";
-
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
-const STORAGE_KEY =
-    "citytalks_daily_activity_v1";
-
-
-/* =========================================================
-   TRANSLATIONS
-========================================================= */
-
-const translations = {
-
-    es: {
-
-        verified:
-            "PLATAFORMA VERIFICADA PARA JUGADORES EN PERÚ",
-
-        headline:
-            '¿Listo para <span class="highlight">probar tu suerte</span> hoy?',
-
-        subtitle:
-            "Ingresa a la plataforma oficial, juega en Aviator y disfruta de una experiencia de juego desde Perú.",
-
-        activityLabel:
-            "Ganancias de hoy en Perú",
-
-        activityNote:
-            "Indicador de actividad en vivo",
-
-        paymentTitle:
-            "Métodos de pago disponibles",
-
-        peru:
-            "Perú",
-
-        fast:
-            "Retiros rápidos disponibles",
-
-        promo:
-            "🎁 Usa el código promocional al registrarte",
-
-        copy:
-            "📋 Copiar",
-
-        copied:
-            "✓ ¡Copiado!",
-
-        cta:
-            "ENTRAR Y JUGAR AHORA ➔",
-
-        footer:
-            "Solo para mayores de 18 años (+18). Juega con responsabilidad."
-
-    },
-
-
-    en: {
-
-        verified:
-            "VERIFIED PLATFORM FOR PLAYERS IN PERU",
-
-        headline:
-            'Ready to <span class="highlight">try your luck</span> today?',
-
-        subtitle:
-            "Access the official platform, play Aviator and enjoy a gaming experience from Peru.",
-
-        activityLabel:
-            "Today's winnings in Peru",
-
-        activityNote:
-            "Live activity indicator",
-
-        paymentTitle:
-            "Payment methods available",
-
-        peru:
-            "Peru",
-
-        fast:
-            "Fast withdrawals available",
-
-        promo:
-            "🎁 Use the promo code when registering",
-
-        copy:
-            "📋 Copy",
-
-        copied:
-            "✓ Copied!",
-
-        cta:
-            "ENTER & PLAY NOW ➔",
-
-        footer:
-            "For 18+ only. Please play responsibly."
-
-    }
-
-};
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const langES =
-    document.getElementById("langES");
-
-const langEN =
-    document.getElementById("langEN");
-
-const verifiedText =
-    document.getElementById("verifiedText");
-
-const headline =
-    document.getElementById("headline");
-
-const subtitle =
-    document.getElementById("subtitle");
-
-const activityLabel =
-    document.getElementById("activityLabel");
-
-const activityNote =
-    document.getElementById("activityNote");
-
-const paymentTitle =
-    document.getElementById("paymentTitle");
-
-const yapeSub =
-    document.getElementById("yapeSub");
-
-const plinSub =
-    document.getElementById("plinSub");
-
-const fastText =
-    document.getElementById("fastText");
-
-const promoTitle =
-    document.getElementById("promoTitle");
-
-const copyBtn =
-    document.getElementById("copyBtn");
-
-const ctaText =
-    document.getElementById("ctaText");
-
-const footerText =
-    document.getElementById("footerText");
-
-const activityValue =
-    document.getElementById("activityValue");
-
-const ctaButton =
-    document.getElementById("ctaButton");
-
-
-/* =========================================================
-   COUNTER CONFIG
-========================================================= */
+const OFFER_LINK = "https://w-one477.com/v3/aviator-fire?p=349u";
+const PROMO_CODE = "GANASOLES";
 
 let currentLanguage = "es";
 
-/*
-   Основная сумма всегда хранится в PEN.
-
-   Поэтому:
-   ES -> показывает PEN
-   EN -> показывает ту же сумму, конвертированную в USD
-
-   Переключение языка НЕ создаёт новую сумму.
-*/
-
-let currentValue = 255479;
-
-
-/*
-   Курс используется только для визуального
-   отображения английской версии.
-
-   Например:
-
-   S/ 255,479
-   ↓
-   $68,128
-
-   Сама сохранённая сумма остаётся:
-   255479 PEN
-*/
-
-const PEN_TO_USD =
-    3.75;
-
-
-/* =========================================================
-   CURRENCY
-========================================================= */
-
-function formatPEN(value){
-
-    return "S/ " +
-        Math.floor(value)
-        .toLocaleString("es-PE");
-
-}
-
-
-function formatUSD(value){
-
-    const usd =
-        Math.floor(
-            value / PEN_TO_USD
-        );
-
-    return "$" +
-        usd.toLocaleString("en-US");
-
-}
-
-
-/*
-   Эта функция отвечает только за отображение.
-
-   Она НЕ изменяет currentValue.
-*/
-
-function renderCounter(){
-
-    if(currentLanguage === "es"){
-
-        activityValue.textContent =
-            formatPEN(currentValue);
-
+const translations = {
+    es: {
+        verified: "PLATAFORMA VERIFICADA",
+        headline: '¿Listo para <span class="highlight">probar tu suerte</span> hoy?',
+        subtitle: "Ingresa a la plataforma oficial, accede a la mejor experiencia de entretenimiento y reclama tu bono.",
+        paymentTitle: "Métodos de pago e ingreso",
+        promo: "🎁 Código promocional de acceso",
+        copy: "📋 Copiar",
+        copied: "✓ ¡Copiado!",
+        cta: "ENTRAR Y EMPEZAR AHORA ➔",
+        footer: "Solo para mayores de 18 años (+18). Juega con responsabilidad."
+    },
+    en: {
+        verified: "VERIFIED PLATFORM",
+        headline: 'Ready to <span class="highlight">try your luck</span> today?',
+        subtitle: "Access the official platform, enjoy the best entertainment experience and claim your bonus.",
+        paymentTitle: "Payment & Entry Methods",
+        promo: "🎁 Official Promo Code",
+        copy: "📋 Copy",
+        copied: "✓ Copied!",
+        cta: "ENTER & START NOW ➔",
+        footer: "For 18+ only. Please play responsibly."
     }
-
-    else{
-
-        activityValue.textContent =
-            formatUSD(currentValue);
-
-    }
-
-}
-
-
-/* =========================================================
-   PERU DATE
-========================================================= */
-
-/*
-   Получаем текущую календарную дату именно
-   по времени Перу.
-
-   Важно:
-
-   Это НЕ время пользователя.
-
-   Даже если посетитель находится в США,
-   Европе или Украине, дата определяется
-   по America/Lima.
-*/
-
-function getPeruDate(){
-
-    return new Intl.DateTimeFormat(
-        "en-CA",
-        {
-            timeZone:"America/Lima",
-            year:"numeric",
-            month:"2-digit",
-            day:"2-digit"
-        }
-    ).format(
-        new Date()
-    );
-
-}
-
-
-/* =========================================================
-   DAILY DATA
-========================================================= */
-
-function createNewDailyData(){
-
-    /*
-       Новый стартовый показатель.
-
-       Он создаётся только один раз
-       при начале нового дня в Перу.
-    */
-
-    const startValue =
-        Math.floor(
-            Math.random() *
-            (420000 - 180000 + 1)
-        ) + 180000;
-
-
-    const data = {
-
-        date:
-            getPeruDate(),
-
-        value:
-            startValue
-
-    };
-
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
-
-
-    currentValue =
-        startValue;
-
-}
-
-
-/* =========================================================
-   LOAD DAILY DATA
-========================================================= */
-
-function loadDailyData(){
-
-    const today =
-        getPeruDate();
-
-
-    let savedData = null;
-
-
-    try{
-
-        const raw =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
-
-
-        if(raw){
-
-            savedData =
-                JSON.parse(raw);
-
-        }
-
-    }
-
-    catch(error){
-
-        savedData = null;
-
-    }
-
-
-    /*
-       Если данных нет —
-       создаём новый дневной показатель.
-    */
-
-    if(
-        !savedData ||
-        savedData.date !== today ||
-        typeof savedData.value !== "number"
-    ){
-
-        createNewDailyData();
-
-        return;
-
-    }
-
-
-    /*
-       Если дата та же —
-       возвращаем сохранённую сумму.
-
-       Поэтому:
-
-       F5
-       CTRL+R
-       открыть заново
-       переключить язык
-
-       НЕ сбрасывают сумму.
-    */
-
-    currentValue =
-        savedData.value;
-
-}
-
-
-/* =========================================================
-   SAVE CURRENT VALUE
-========================================================= */
-
-function saveCurrentValue(){
-
-    const data = {
-
-        date:
-            getPeruDate(),
-
-        value:
-            currentValue
-
-    };
-
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(data)
-    );
-
-}
-
-
-/* =========================================================
-   UPDATE COUNTER
-========================================================= */
-
-function updateCounter(){
-
-    /*
-       Перед увеличением проверяем,
-       не наступил ли новый день в Перу.
-    */
-
-    const today =
-        getPeruDate();
-
-
-    let savedData = null;
-
-
-    try{
-
-        const raw =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
-
-
-        if(raw){
-
-            savedData =
-                JSON.parse(raw);
-
-        }
-
-    }
-
-    catch(error){
-
-        savedData = null;
-
-    }
-
-
-    /*
-       Если наступил новый день —
-       начинаем новый цикл.
-    */
-
-    if(
-        !savedData ||
-        savedData.date !== today
-    ){
-
-        createNewDailyData();
-
-        renderCounter();
-
-    }
-
-
-    /*
-       Увеличение суммы.
-
-       Здесь оставлена твоя исходная логика:
-       +40 ... +180 PEN.
-    */
-
-    const increase =
-        Math.floor(
-            Math.random() *
-            (180 - 40 + 1)
-        ) + 40;
-
-
-    currentValue +=
-        increase;
-
-
-    /*
-       Верхний предел.
-
-       Если сумма дошла выше 420 000,
-       создаём новый диапазон.
-
-       Но это НЕ сброс дня —
-       просто новый показатель внутри
-       текущего дня.
-    */
-
-    if(currentValue > 420000){
-
-        currentValue =
-            Math.floor(
-                Math.random() *
-                (420000 - 350000 + 1)
-            ) + 350000;
-
-    }
-
-
-    /*
-       Сохраняем новое значение.
-
-       Поэтому после обновления страницы
-       браузер загрузит именно эту сумму.
-    */
-
-    saveCurrentValue();
-
-
-    /*
-       Визуальное обновление.
-    */
-
-    activityValue.classList.add(
-        "updated"
-    );
-
-
-    renderCounter();
-
-
-    setTimeout(
-        function(){
-
-            activityValue.classList.remove(
-                "updated"
-            );
-
-        },
-        220
-    );
-
-
-    /*
-       Следующее увеличение.
-    */
-
-    setTimeout(
-        updateCounter,
-        Math.floor(
-            Math.random() *
-            (5000 - 2500 + 1)
-        ) + 2500
-    );
-
-}
-
-
-/* =========================================================
-   LANGUAGE
-========================================================= */
+};
+
+const langES = document.getElementById("langES");
+const langEN = document.getElementById("langEN");
+const verifiedText = document.getElementById("verifiedText");
+const headline = document.getElementById("headline");
+const subtitle = document.getElementById("subtitle");
+const paymentTitle = document.getElementById("paymentTitle");
+const promoTitle = document.getElementById("promoTitle");
+const copyBtn = document.getElementById("copyBtn");
+const ctaText = document.getElementById("ctaText");
+const footerText = document.getElementById("footerText");
+const ctaButton = document.getElementById("ctaButton");
 
 function setLanguage(language){
+    currentLanguage = language;
+    const t = translations[language];
 
-    currentLanguage =
-        language;
-
-
-    const t =
-        translations[language];
-
-
-    verifiedText.textContent =
-        t.verified;
-
-
-    headline.innerHTML =
-        t.headline;
-
-
-    subtitle.textContent =
-        t.subtitle;
-
-
-    activityLabel.textContent =
-        t.activityLabel;
-
-
-    activityNote.textContent =
-        t.activityNote;
-
-
-    paymentTitle.textContent =
-        t.paymentTitle;
-
-
-    yapeSub.textContent =
-        t.peru;
-
-
-    plinSub.textContent =
-        t.peru;
-
-
-    fastText.textContent =
-        t.fast;
-
-
-    promoTitle.textContent =
-        t.promo;
-
-
-    copyBtn.textContent =
-        t.copy;
-
-
-    ctaText.textContent =
-        t.cta;
-
-
-    footerText.textContent =
-        t.footer;
-
-
-    /*
-       Здесь БОЛЬШЕ НЕТ:
-
-       setInitialCurrency("PEN");
-       setInitialCurrency("USD");
-
-       Именно они раньше ломали логику.
-    */
-
+    verifiedText.textContent = t.verified;
+    headline.innerHTML = t.headline;
+    subtitle.textContent = t.subtitle;
+    paymentTitle.textContent = t.paymentTitle;
+    promoTitle.textContent = t.promo;
+    copyBtn.textContent = t.copy;
+    ctaText.textContent = t.cta;
+    footerText.textContent = t.footer;
 
     if(language === "es"){
-
-        langES.classList.add(
-            "active"
-        );
-
-        langEN.classList.remove(
-            "active"
-        );
-
-        document.documentElement.lang =
-            "es";
-
+        langES.classList.add("active");
+        langEN.classList.remove("active");
+        document.documentElement.lang = "es";
+    } else {
+        langEN.classList.add("active");
+        langES.classList.remove("active");
+        document.documentElement.lang = "en";
     }
-
-    else{
-
-        langEN.classList.add(
-            "active"
-        );
-
-        langES.classList.remove(
-            "active"
-        );
-
-        document.documentElement.lang =
-            "en";
-
-    }
-
-
-    /*
-       Просто перерисовываем
-       уже существующую сумму.
-    */
-
-    renderCounter();
-
 }
 
+langES.addEventListener("click", () => setLanguage("es"));
+langEN.addEventListener("click", () => setLanguage("en"));
 
-/* =========================================================
-   LANGUAGE BUTTONS
-========================================================= */
-
-langES.addEventListener(
-    "click",
-    function(){
-
-        setLanguage("es");
-
+copyBtn.addEventListener("click", async function(){
+    try {
+        await navigator.clipboard.writeText(PROMO_CODE);
+    } catch(error) {
+        const textarea = document.createElement("textarea");
+        textarea.value = PROMO_CODE;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
     }
-);
+    copyBtn.textContent = translations[currentLanguage].copied;
+    setTimeout(() => { copyBtn.textContent = translations[currentLanguage].copy; }, 1500);
+});
 
-
-langEN.addEventListener(
-    "click",
-    function(){
-
-        setLanguage("en");
-
+ctaButton.href = OFFER_LINK;
+ctaButton.addEventListener("click", function(e){
+    e.preventDefault();
+    if(typeof gtag === "function"){
+        gtag("event", "continue_click", {
+            event_category: "CTA",
+            event_label: "Old Accounts Landing Page",
+            language: currentLanguage
+        });
     }
-);
-
-
-/* =========================================================
-   COPY PROMO
-========================================================= */
-
-copyBtn.addEventListener(
-    "click",
-    async function(){
-
-        try{
-
-            await navigator.clipboard.writeText(
-                PROMO_CODE
-            );
-
-        }
-
-        catch(error){
-
-            const textarea =
-                document.createElement(
-                    "textarea"
-                );
-
-            textarea.value =
-                PROMO_CODE;
-
-            document.body.appendChild(
-                textarea
-            );
-
-            textarea.select();
-
-            document.execCommand(
-                "copy"
-            );
-
-            textarea.remove();
-
-        }
-
-
-        copyBtn.textContent =
-            translations[
-                currentLanguage
-            ].copied;
-
-
-        setTimeout(
-            function(){
-
-                copyBtn.textContent =
-                    translations[
-                        currentLanguage
-                    ].copy;
-
-            },
-            1500
-        );
-
-    }
-);
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-ctaButton.href =
-    OFFER_LINK;
-
-
-ctaButton.addEventListener(
-    "click",
-    function(e){
-
-        e.preventDefault();
-
-
-        if(typeof gtag === "function"){
-
-            gtag(
-                "event",
-                "continue_click",
-                {
-
-                    event_category:
-                        "CTA",
-
-                    event_label:
-                        "Verified Platform Landing Page",
-
-                    language:
-                        currentLanguage,
-
-                    currency:
-                        currentLanguage === "es"
-                            ? "PEN"
-                            : "USD"
-
-                }
-            );
-
-        }
-
-
-        setTimeout(
-            function(){
-
-                window.location.href =
-                    OFFER_LINK;
-
-            },
-            250
-        );
-
-    }
-);
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-/*
-   1. Загружаем сохранённую сумму.
-   2. Если новый день — создаём новую.
-   3. Показываем ES.
-   4. Запускаем увеличение.
-*/
-
-loadDailyData();
+    setTimeout(() => { window.location.href = OFFER_LINK; }, 250);
+});
 
 setLanguage("es");
-
-
-setTimeout(
-    updateCounter,
-    3000
-);
-
 </script>
 
 </body>
